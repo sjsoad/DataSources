@@ -14,7 +14,7 @@ public class TableViewArrayDataSource: NSObject, ArrayDataSourceRepresentable {
     private var editingProvider: TableViewRowEditing?
     private var movingProvider: TableViewRowMoving?
     
-    init(with sections: [SectionModel], editingProvider: TableViewRowEditing? = nil, movingProvider: TableViewRowMoving? = nil) {
+    public init(with sections: [SectionModel], editingProvider: TableViewRowEditing? = nil, movingProvider: TableViewRowMoving? = nil) {
         self.sections = sections
         self.editingProvider = editingProvider
         self.movingProvider = movingProvider

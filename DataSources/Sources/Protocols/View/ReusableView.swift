@@ -16,7 +16,7 @@ public protocol ReusableView {
     
 }
 
-extension ReusableView {
+public extension ReusableView {
 
     static var reuseIdentifier: String {
         return String(describing: self)

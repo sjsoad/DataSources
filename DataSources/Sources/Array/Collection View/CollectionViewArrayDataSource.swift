@@ -13,7 +13,7 @@ public class CollectionViewArrayDataSource: NSObject, ArrayDataSourceRepresentab
     private(set) public var sections: [SectionModel] = []
     private(set) var movingProvider: CollectionViewRowMoving?
     
-    init(with sections: [SectionModel], movingProvider: CollectionViewRowMoving? = nil) {
+    public init(with sections: [SectionModel], movingProvider: CollectionViewRowMoving? = nil) {
         self.sections = sections
         self.movingProvider = movingProvider
     }

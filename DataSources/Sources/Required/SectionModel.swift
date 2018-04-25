@@ -14,7 +14,7 @@ public class SectionModel: NSObject, DataSourceSectionRepresentable {
     private(set) public var header: SectionHeader?
     private(set) public var footer: SectionFooter?
     
-    init(withItems items: [DataSourceModel],
+    public init(withItems items: [DataSourceModel],
          header: SectionHeader? = nil,
          footer: SectionFooter? = nil) {
         self.items = items
