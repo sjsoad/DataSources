@@ -29,5 +29,7 @@ s.framework = "UIKit"
 
 # 8
 s.source_files = "DataSources/**/*.{swift}"
+# 9
+s.resources = "DataSources/**/*.{rtf}"
 
 end
