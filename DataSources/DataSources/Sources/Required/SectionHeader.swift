@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class SectionHeader: NSObject {
+open class SectionHeader: NSObject {
 
     private(set) var headerTitle: String?
     private(set) var headerModel: DataSourceModel?

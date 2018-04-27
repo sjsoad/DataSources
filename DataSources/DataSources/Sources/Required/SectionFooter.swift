@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class SectionFooter: NSObject {
+open class SectionFooter: NSObject {
 
     private(set) var footerTitle: String?
     private(set) var footerModel: DataSourceModel?

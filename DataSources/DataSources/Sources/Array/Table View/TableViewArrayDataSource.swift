@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class TableViewArrayDataSource: NSObject, ArrayDataSourceRepresentable {
+open class TableViewArrayDataSource: NSObject, ArrayDataSourceRepresentable {
 
     private(set) public var sections: [SectionModel] = []
     private var editingProvider: TableViewRowEditing?

@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class CollectionViewArrayDataSource: NSObject, ArrayDataSourceRepresentable {
+open class CollectionViewArrayDataSource: NSObject, ArrayDataSourceRepresentable {
     
     private(set) public var sections: [SectionModel] = []
     private(set) var movingProvider: CollectionViewRowMoving?
