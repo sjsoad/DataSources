@@ -8,25 +8,22 @@
 
 import UIKit
 
-open class SectionModel: NSObject, DataSourceSectionRepresentable {
-
+open class SectionModel: NSObject, DataSourceSectionRepresentable, DataSourceSectionAppendable, DataSourceSectionRemovable,
+DataSourceSectionInsertable, DataSourceSectionReordering {
+    
     private(set) public var items: [DataSourceModel]
     private(set) public var header: SectionHeader?
     private(set) public var footer: SectionFooter?
     
     public init(withItems items: [DataSourceModel],
-         header: SectionHeader? = nil,
-         footer: SectionFooter? = nil) {
+                header: SectionHeader? = nil,
+                footer: SectionFooter? = nil) {
         self.items = items
         self.header = header
         self.footer = footer
     }
     
-}
-
-// MARK: - DataSourceSectionAppendable -
-
-extension SectionModel: DataSourceSectionAppendable {
+    // MARK: - DataSourceSectionAppendable -
     
     public func append(newItems: [DataSourceModel], handler: DataSourceSectionChangeHandler?) {
         let lastIndex = items.count - 1
@@ -41,11 +38,7 @@ extension SectionModel: DataSourceSectionAppendable {
         handler?(diff)
     }
     
-}
-
-// MARK: - DataSourceSectionRemovable -
-
-extension SectionModel: DataSourceSectionRemovable {
+    // MARK: - DataSourceSectionRemovable -
     
     public func remove(itemsAt indexes: [Int]) {
         indexes.forEach { [weak self] (index) in
@@ -58,11 +51,7 @@ extension SectionModel: DataSourceSectionRemovable {
         self.items.remove(at: index)
     }
     
-}
-
-// MARK: - DataSourceSectionInsertable -
-
-extension SectionModel: DataSourceSectionInsertable {
+    // MARK: - DataSourceSectionInsertable -
     
     public func insert(newItems: [DataSourceModel], at index: Int, handler: DataSourceSectionChangeHandler?) {
         guard self.items.indices.contains(index) || index == 0 else { return }
@@ -78,9 +67,7 @@ extension SectionModel: DataSourceSectionInsertable {
         handler?(diff)
     }
     
-}
-
-extension SectionModel: DataSourceSectionReordering {    
+    // MARK: - DataSourceSectionReordering -
     
     public func replace(itemAt index: Int, with item: DataSourceModel) {
         guard self.items.indices.contains(index) else { return }
@@ -93,3 +80,4 @@ extension SectionModel: DataSourceSectionReordering {
     }
     
 }
+
