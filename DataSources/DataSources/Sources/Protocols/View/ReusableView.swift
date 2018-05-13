@@ -16,13 +16,13 @@ public protocol ReusableView {
     
 }
 
-extension ReusableView {
+public extension ReusableView {
 
-    public static var reuseIdentifier: String {
+    static var reuseIdentifier: String {
         return String(describing: self)
     }
     
-    public static var nibName: String {
+    static var nibName: String {
         return String(describing: self)
     }
     

@@ -78,21 +78,21 @@ public protocol DataSourceReordering {
     
 }
 
-extension ArrayDataSourceRepresentable where Self: NSObject {
+public extension ArrayDataSourceRepresentable where Self: NSObject {
     
     // MARK: - DataSourceRepresentable -
     
-    public func numberOfSections() -> Int {
+    func numberOfSections() -> Int {
         return sections.count
     }
     
-    public func numberOfItemsInSection(sectionIndex: Int) -> Int {
+    func numberOfItemsInSection(sectionIndex: Int) -> Int {
         let section = sections[sectionIndex]
         let items = section.items
         return items.count
     }
     
-    public func itemAtIndexPath(indexPath: IndexPath) -> DataSourceModel? {
+    func itemAtIndexPath(indexPath: IndexPath) -> DataSourceModel? {
         guard sections.indices.contains(indexPath.section) else { return nil }
         let section = sections[indexPath.section]
         let items = section.items
@@ -103,7 +103,7 @@ extension ArrayDataSourceRepresentable where Self: NSObject {
     
     // MARK: - DataSourceAppendable -
     
-    public func append(items: [DataSourceModel], toSectionAtIndex sectionIndex: Int, handler: DataSourceSectionsChangeHandler?) {
+    func append(items: [DataSourceModel], toSectionAtIndex sectionIndex: Int, handler: DataSourceSectionsChangeHandler?) {
         guard sections.indices.contains(sectionIndex), !items.isEmpty else { return }
         let section = sections[sectionIndex]
         section.append(newItems: items) { (indexes) in
@@ -112,7 +112,7 @@ extension ArrayDataSourceRepresentable where Self: NSObject {
         }
     }
     
-    public func append(item: DataSourceModel, toSectionAtIndex sectionIndex: Int, handler: DataSourceSectionsChangeHandler?) {
+    func append(item: DataSourceModel, toSectionAtIndex sectionIndex: Int, handler: DataSourceSectionsChangeHandler?) {
         guard sections.indices.contains(sectionIndex) else { return }
         let section = sections[sectionIndex]
         section.append(item: item) { (indexes) in
@@ -123,13 +123,13 @@ extension ArrayDataSourceRepresentable where Self: NSObject {
     
     // MARK: - DataSourceRemovable -
     
-    public func remove(itemsAt indexPathes: [IndexPath]) {
+    func remove(itemsAt indexPathes: [IndexPath]) {
         indexPathes.forEach { [weak self] (indexPath) in
             self?.remove(itemAt: indexPath)
         }
     }
     
-    public func remove(itemAt indexPath: IndexPath) {
+    func remove(itemAt indexPath: IndexPath) {
         guard sections.indices.contains(indexPath.section) else { return }
         let section = sections[indexPath.section]
         section.remove(itemAt: indexPath.row)
@@ -137,7 +137,7 @@ extension ArrayDataSourceRepresentable where Self: NSObject {
     
     // MARK: - DataSourceInsertable -
     
-    public func insert(items: [DataSourceModel], at indexPath: IndexPath, handler: DataSourceSectionsChangeHandler?) {
+    func insert(items: [DataSourceModel], at indexPath: IndexPath, handler: DataSourceSectionsChangeHandler?) {
         guard sections.indices.contains(indexPath.section), !items.isEmpty else { return }
         let section = sections[indexPath.section]
         section.insert(newItems: items, at: indexPath.row) { (indexes) in
@@ -146,7 +146,7 @@ extension ArrayDataSourceRepresentable where Self: NSObject {
         }
     }
 
-    public func insert(item: DataSourceModel, at indexPath: IndexPath, handler: DataSourceSectionsChangeHandler?) {
+    func insert(item: DataSourceModel, at indexPath: IndexPath, handler: DataSourceSectionsChangeHandler?) {
         guard sections.indices.contains(indexPath.section) else { return }
         let section = sections[indexPath.section]
         section.insert(item: item, at:  indexPath.row) { (indexes) in
@@ -157,13 +157,13 @@ extension ArrayDataSourceRepresentable where Self: NSObject {
     
     // MARK: - DataSourceReordering -
     
-    public func replace(itemAt indexPath: IndexPath, with item: DataSourceModel) {
+    func replace(itemAt indexPath: IndexPath, with item: DataSourceModel) {
         guard sections.indices.contains(indexPath.section) else { return }
         let section = sections[indexPath.section]
         section.replace(itemAt: indexPath.row, with: item)
     }
     
-    public func reorderItems(at sourceIndexPath: IndexPath, and destinationIndexPath: IndexPath) {
+    func reorderItems(at sourceIndexPath: IndexPath, and destinationIndexPath: IndexPath) {
         guard sections.indices.contains(sourceIndexPath.section), sections.indices.contains(destinationIndexPath.section) else { return }
         if sourceIndexPath.section == destinationIndexPath.section {
             let section = sections[sourceIndexPath.section]

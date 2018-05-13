@@ -13,13 +13,13 @@ public protocol ReusableCell {
     static var nibName: String { get }
 }
 
-extension ReusableCell where Self: UIView {
+public extension ReusableCell where Self: UIView {
     
-    public static var reuseIdentifier: String {
+    static var reuseIdentifier: String {
         return String(describing: self)
     }
     
-    public static var nibName: String {
+    static var nibName: String {
         return String(describing: self)
     }
 }
