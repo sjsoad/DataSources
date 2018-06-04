@@ -11,6 +11,6 @@ import Foundation
 
 public protocol ConfigurableView: ReusableView {
 
-    func configure<T>(viewModel: T)
+    func configure()
     
 }

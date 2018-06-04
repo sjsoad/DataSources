@@ -23,8 +23,8 @@ DataSourceReordering {
 
 public protocol DataSourceAppendable {
     
-    func append(items: [DataSourceModel], toSectionAtIndex index: Int, handler: DataSourceSectionsChangeHandler?)
-    func append(item: DataSourceModel, toSectionAtIndex index: Int, handler: DataSourceSectionsChangeHandler?)
+    func append(items: [DataSourceObjectPresenter], toSectionAtIndex index: Int, handler: DataSourceSectionsChangeHandler?)
+    func append(item: DataSourceObjectPresenter, toSectionAtIndex index: Int, handler: DataSourceSectionsChangeHandler?)
     
     // These methods lead to a mutation of the array of sections, so implemented in "View type"ArrayDataSource
     func append(newSections: [SectionModel], handler: DataSourceChangeHandler?)
@@ -48,8 +48,8 @@ public protocol DataSourceRemovable {
 
 public protocol DataSourceInsertable {
     
-    func insert(items: [DataSourceModel], at indexPath: IndexPath, handler: DataSourceSectionsChangeHandler?)
-    func insert(item: DataSourceModel, at indexPath: IndexPath, handler: DataSourceSectionsChangeHandler?)
+    func insert(items: [DataSourceObjectPresenter], at indexPath: IndexPath, handler: DataSourceSectionsChangeHandler?)
+    func insert(item: DataSourceObjectPresenter, at indexPath: IndexPath, handler: DataSourceSectionsChangeHandler?)
     
     // These methods lead to a mutation of the array of sections, so implemented in "View type"ArrayDataSource
     func insert(newSections: [SectionModel], at index: Int, handler: DataSourceChangeHandler?)
@@ -70,7 +70,7 @@ public protocol DataSourceInsertable {
 
 public protocol DataSourceReordering {
     
-    func replace(itemAt indexPath: IndexPath, with item: DataSourceModel)
+    func replace(itemAt indexPath: IndexPath, with item: DataSourceObjectPresenter)
     func reorderItems(at sourceIndexPath: IndexPath, and destinationIndexPath: IndexPath)
     
     func replace(sectionAt index: Int, with section: SectionModel)
@@ -92,7 +92,7 @@ public extension ArrayDataSourceRepresentable where Self: NSObject {
         return items.count
     }
     
-    func itemAtIndexPath(indexPath: IndexPath) -> DataSourceModel? {
+    func itemAtIndexPath(indexPath: IndexPath) -> DataSourceObjectPresenter? {
         guard sections.indices.contains(indexPath.section) else { return nil }
         let section = sections[indexPath.section]
         let items = section.items
@@ -103,7 +103,7 @@ public extension ArrayDataSourceRepresentable where Self: NSObject {
     
     // MARK: - DataSourceAppendable -
     
-    func append(items: [DataSourceModel], toSectionAtIndex sectionIndex: Int, handler: DataSourceSectionsChangeHandler?) {
+    func append(items: [DataSourceObjectPresenter], toSectionAtIndex sectionIndex: Int, handler: DataSourceSectionsChangeHandler?) {
         guard sections.indices.contains(sectionIndex), !items.isEmpty else { return }
         let section = sections[sectionIndex]
         section.append(newItems: items) { (indexes) in
@@ -112,7 +112,7 @@ public extension ArrayDataSourceRepresentable where Self: NSObject {
         }
     }
     
-    func append(item: DataSourceModel, toSectionAtIndex sectionIndex: Int, handler: DataSourceSectionsChangeHandler?) {
+    func append(item: DataSourceObjectPresenter, toSectionAtIndex sectionIndex: Int, handler: DataSourceSectionsChangeHandler?) {
         guard sections.indices.contains(sectionIndex) else { return }
         let section = sections[sectionIndex]
         section.append(item: item) { (indexes) in
@@ -137,7 +137,7 @@ public extension ArrayDataSourceRepresentable where Self: NSObject {
     
     // MARK: - DataSourceInsertable -
     
-    func insert(items: [DataSourceModel], at indexPath: IndexPath, handler: DataSourceSectionsChangeHandler?) {
+    func insert(items: [DataSourceObjectPresenter], at indexPath: IndexPath, handler: DataSourceSectionsChangeHandler?) {
         guard sections.indices.contains(indexPath.section), !items.isEmpty else { return }
         let section = sections[indexPath.section]
         section.insert(newItems: items, at: indexPath.row) { (indexes) in
@@ -146,7 +146,7 @@ public extension ArrayDataSourceRepresentable where Self: NSObject {
         }
     }
 
-    func insert(item: DataSourceModel, at indexPath: IndexPath, handler: DataSourceSectionsChangeHandler?) {
+    func insert(item: DataSourceObjectPresenter, at indexPath: IndexPath, handler: DataSourceSectionsChangeHandler?) {
         guard sections.indices.contains(indexPath.section) else { return }
         let section = sections[indexPath.section]
         section.insert(item: item, at:  indexPath.row) { (indexes) in
@@ -157,7 +157,7 @@ public extension ArrayDataSourceRepresentable where Self: NSObject {
     
     // MARK: - DataSourceReordering -
     
-    func replace(itemAt indexPath: IndexPath, with item: DataSourceModel) {
+    func replace(itemAt indexPath: IndexPath, with item: DataSourceObjectPresenter) {
         guard sections.indices.contains(indexPath.section) else { return }
         let section = sections[indexPath.section]
         section.replace(itemAt: indexPath.row, with: item)

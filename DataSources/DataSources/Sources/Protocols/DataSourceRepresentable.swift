@@ -13,6 +13,6 @@ public protocol DataSourceRepresentable {
 
     func numberOfSections() -> Int
     func numberOfItemsInSection(sectionIndex: Int) -> Int
-    func itemAtIndexPath(indexPath: IndexPath) -> DataSourceModel?
+    func itemAtIndexPath(indexPath: IndexPath) -> DataSourceObjectPresenter?
     
 }

@@ -99,10 +99,10 @@ extension TableViewArrayDataSource: UITableViewDataSource {
     
     public func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let model = itemAtIndexPath(indexPath: indexPath),
-            let cell = tableView.dequeueReusableCell(withIdentifier: model.reuseIdentifier),
+        if let presenter = itemAtIndexPath(indexPath: indexPath),
+            let cell = tableView.dequeueReusableCell(withIdentifier: presenter.reuseIdentifier),
             let configurableCell = cell as? ConfigurableCell {
-            configurableCell.configure(viewModel: model)
+            configurableCell.configure()
             return cell
         }
         return UITableViewCell()

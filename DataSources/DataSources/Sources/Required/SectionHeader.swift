@@ -11,13 +11,13 @@ import UIKit
 open class SectionHeader: NSObject {
 
     private(set) var headerTitle: String?
-    private(set) var headerModel: DataSourceModel?
+    private(set) var headerModel: DataSourceObjectPresenter?
     
     init(with title: String?) {
         self.headerTitle = title
     }
     
-    init(with model: DataSourceModel?) {
+    init(with model: DataSourceObjectPresenter?) {
         self.headerModel = model
     }
     

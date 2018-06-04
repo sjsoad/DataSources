@@ -11,13 +11,13 @@ import UIKit
 open class SectionFooter: NSObject {
 
     private(set) var footerTitle: String?
-    private(set) var footerModel: DataSourceModel?
+    private(set) var footerModel: DataSourceObjectPresenter?
     
     init(with title: String?) {
         self.footerTitle = title
     }
     
-    init(with model: DataSourceModel?) {
+    init(with model: DataSourceObjectPresenter?) {
         self.footerModel = model
     }
     

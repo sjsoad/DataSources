@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A5619FEF20C3D4C600CB0B59 /* DataSourceObjectPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5619FEE20C3D4C600CB0B59 /* DataSourceObjectPresenter.swift */; };
 		A5D6A8362090FB4A00DF7495 /* ReadMe.rtf in Resources */ = {isa = PBXBuildFile; fileRef = A5D6A8352090FB4A00DF7495 /* ReadMe.rtf */; };
 		A5F8CFCC2090BC92002E5F9E /* DataSources.h in Headers */ = {isa = PBXBuildFile; fileRef = A5F8CFCA2090BC91002E5F9E /* DataSources.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A5F8CFF22090BCBE002E5F9E /* CollectionViewArrayDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F8CFD52090BCBE002E5F9E /* CollectionViewArrayDataSource.swift */; };
@@ -22,13 +23,13 @@
 		A5F8CFFD2090BCBE002E5F9E /* ConfigurableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F8CFE92090BCBE002E5F9E /* ConfigurableCell.swift */; };
 		A5F8CFFE2090BCBE002E5F9E /* ReusableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F8CFEA2090BCBE002E5F9E /* ReusableCell.swift */; };
 		A5F8CFFF2090BCBE002E5F9E /* DataSourceRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F8CFEB2090BCBE002E5F9E /* DataSourceRepresentable.swift */; };
-		A5F8D0002090BCBE002E5F9E /* DataSourceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F8CFED2090BCBE002E5F9E /* DataSourceModel.swift */; };
 		A5F8D0012090BCBE002E5F9E /* DataSourceSectionRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F8CFEE2090BCBE002E5F9E /* DataSourceSectionRepresentable.swift */; };
 		A5F8D0022090BCBE002E5F9E /* ConfigurableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F8CFF02090BCBE002E5F9E /* ConfigurableView.swift */; };
 		A5F8D0032090BCBE002E5F9E /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F8CFF12090BCBE002E5F9E /* ReusableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A5619FEE20C3D4C600CB0B59 /* DataSourceObjectPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceObjectPresenter.swift; sourceTree = "<group>"; };
 		A5D6A8352090FB4A00DF7495 /* ReadMe.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = ReadMe.rtf; sourceTree = "<group>"; };
 		A5F8CFC72090BC91002E5F9E /* DataSources.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DataSources.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5F8CFCA2090BC91002E5F9E /* DataSources.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataSources.h; sourceTree = "<group>"; };
@@ -46,7 +47,6 @@
 		A5F8CFE92090BCBE002E5F9E /* ConfigurableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurableCell.swift; sourceTree = "<group>"; };
 		A5F8CFEA2090BCBE002E5F9E /* ReusableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableCell.swift; sourceTree = "<group>"; };
 		A5F8CFEB2090BCBE002E5F9E /* DataSourceRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSourceRepresentable.swift; sourceTree = "<group>"; };
-		A5F8CFED2090BCBE002E5F9E /* DataSourceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSourceModel.swift; sourceTree = "<group>"; };
 		A5F8CFEE2090BCBE002E5F9E /* DataSourceSectionRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSourceSectionRepresentable.swift; sourceTree = "<group>"; };
 		A5F8CFF02090BCBE002E5F9E /* ConfigurableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurableView.swift; sourceTree = "<group>"; };
 		A5F8CFF12090BCBE002E5F9E /* ReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
@@ -63,6 +63,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A5619FED20C3D4A900CB0B59 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				A5619FEE20C3D4C600CB0B59 /* DataSourceObjectPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 		A5D6A8342090FB4A00DF7495 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -146,12 +154,12 @@
 		A5F8CFDD2090BCBE002E5F9E /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				A5619FED20C3D4A900CB0B59 /* Presenter */,
+				A5F8CFEB2090BCBE002E5F9E /* DataSourceRepresentable.swift */,
+				A5F8CFEE2090BCBE002E5F9E /* DataSourceSectionRepresentable.swift */,
 				A5F8CFDE2090BCBE002E5F9E /* Array */,
 				A5F8CFE02090BCBE002E5F9E /* Features */,
 				A5F8CFE82090BCBE002E5F9E /* Cell */,
-				A5F8CFEB2090BCBE002E5F9E /* DataSourceRepresentable.swift */,
-				A5F8CFEC2090BCBE002E5F9E /* Model */,
-				A5F8CFEE2090BCBE002E5F9E /* DataSourceSectionRepresentable.swift */,
 				A5F8CFEF2090BCBE002E5F9E /* View */,
 			);
 			path = Protocols;
@@ -207,14 +215,6 @@
 				A5F8CFEA2090BCBE002E5F9E /* ReusableCell.swift */,
 			);
 			path = Cell;
-			sourceTree = "<group>";
-		};
-		A5F8CFEC2090BCBE002E5F9E /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				A5F8CFED2090BCBE002E5F9E /* DataSourceModel.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		A5F8CFEF2090BCBE002E5F9E /* View */ = {
@@ -320,8 +320,8 @@
 				A5F8CFF52090BCBE002E5F9E /* SectionFooter.swift in Sources */,
 				A5F8CFF42090BCBE002E5F9E /* SectionModel.swift in Sources */,
 				A5F8D0022090BCBE002E5F9E /* ConfigurableView.swift in Sources */,
-				A5F8D0002090BCBE002E5F9E /* DataSourceModel.swift in Sources */,
 				A5F8CFFD2090BCBE002E5F9E /* ConfigurableCell.swift in Sources */,
+				A5619FEF20C3D4C600CB0B59 /* DataSourceObjectPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

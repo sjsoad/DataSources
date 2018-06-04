@@ -76,7 +76,7 @@ open class CollectionViewArrayDataSource: NSObject, ArrayDataSourceRepresentable
     
     // MARK: - Private
     
-    private func model(for indexPath: IndexPath, kind: String) -> DataSourceModel? {
+    private func model(for indexPath: IndexPath, kind: String) -> DataSourceObjectPresenter? {
         guard sections.indices.contains(indexPath.section) else { return nil }
         let sectionModel = sections[indexPath.section]
         if kind == UICollectionElementKindSectionHeader {
@@ -100,11 +100,11 @@ extension CollectionViewArrayDataSource: UICollectionViewDataSource {
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let model = itemAtIndexPath(indexPath: indexPath) {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: model.reuseIdentifier,
+        if let presenter = itemAtIndexPath(indexPath: indexPath) {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: presenter.reuseIdentifier,
                                                           for: indexPath)
             if let configurableCell = cell as? ConfigurableCell {
-                configurableCell.configure(viewModel: model)
+                configurableCell.configure()
             }
             return cell
         }
@@ -118,12 +118,12 @@ extension CollectionViewArrayDataSource: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView,
                         viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
-        guard let model = self.model(for: indexPath, kind: kind) else { return UICollectionReusableView() }
+        guard let presenter = self.model(for: indexPath, kind: kind) else { return UICollectionReusableView() }
         let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-                                                                   withReuseIdentifier: model.reuseIdentifier,
+                                                                   withReuseIdentifier: presenter.reuseIdentifier,
                                                                    for: indexPath)
         if let configurableView = view as? ConfigurableView {
-            configurableView.configure(viewModel: model)
+            configurableView.configure()
         }
         return view
     }

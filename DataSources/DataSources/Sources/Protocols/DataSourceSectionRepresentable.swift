@@ -13,7 +13,7 @@ public typealias DataSourceSectionChangeHandler = (([Int]) -> Void)
 
 public protocol DataSourceSectionRepresentable {
 
-    var items: [DataSourceModel] { get }
+    var items: [DataSourceObjectPresenter] { get }
     var header: SectionHeader? { get }
     var footer: SectionFooter? { get }
     
@@ -23,8 +23,8 @@ public protocol DataSourceSectionRepresentable {
 
 public protocol DataSourceSectionAppendable {
 
-    func append(newItems: [DataSourceModel], handler: DataSourceSectionChangeHandler?)
-    func append(item: DataSourceModel, handler: DataSourceSectionChangeHandler?)
+    func append(newItems: [DataSourceObjectPresenter], handler: DataSourceSectionChangeHandler?)
+    func append(item: DataSourceObjectPresenter, handler: DataSourceSectionChangeHandler?)
     
 }
 
@@ -41,8 +41,8 @@ public protocol DataSourceSectionRemovable {
 
 public protocol DataSourceSectionInsertable {
     
-    func insert(newItems: [DataSourceModel], at index: Int, handler: DataSourceSectionChangeHandler?)
-    func insert(item: DataSourceModel, at index: Int, handler: DataSourceSectionChangeHandler?)
+    func insert(newItems: [DataSourceObjectPresenter], at index: Int, handler: DataSourceSectionChangeHandler?)
+    func insert(item: DataSourceObjectPresenter, at index: Int, handler: DataSourceSectionChangeHandler?)
     
 }
 
@@ -50,7 +50,7 @@ public protocol DataSourceSectionInsertable {
 
 public protocol DataSourceSectionReordering {
     
-    func replace(itemAt index: Int, with item: DataSourceModel)
+    func replace(itemAt index: Int, with item: DataSourceObjectPresenter)
     func reorderItems(at sourceIndex: Int, and destinationIndex: Int)
     
 }
