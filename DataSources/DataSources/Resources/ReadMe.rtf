@@ -1,10 +1,10 @@
-{\rtf1\ansi\ansicpg1251\cocoartf1504\cocoasubrtf830
+{\rtf1\ansi\ansicpg1251\cocoartf1561\cocoasubrtf400
 {\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Regular;}
 {\colortbl;\red255\green255\blue255;\red178\green24\blue137;\red30\green32\blue40;\red255\green255\blue255;
-\red131\green192\blue87;\red120\green109\blue196;\red0\green160\blue190;\red219\green44\blue56;\red65\green182\blue69;
+\red131\green192\blue87;\red0\green160\blue190;\red65\green182\blue69;\red120\green109\blue196;\red219\green44\blue56;
 }
 {\*\expandedcolortbl;;\csgenericrgb\c69800\c9500\c53600;\csgenericrgb\c11800\c12500\c15700;\csgenericrgb\c100000\c100000\c100000;
-\csgenericrgb\c51200\c75400\c34300;\csgenericrgb\c46900\c42600\c77000;\csgenericrgb\c0\c62600\c74600;\csgenericrgb\c85900\c17100\c21900;\csgenericrgb\c25500\c71400\c27000;
+\csgenericrgb\c51200\c75400\c34300;\csgenericrgb\c0\c62600\c74600;\csgenericrgb\c25500\c71400\c27000;\csgenericrgb\c46900\c42600\c77000;\csgenericrgb\c85900\c17100\c21900;
 }
 \margl1440\margr1440\vieww9000\viewh8400\viewkind0
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
@@ -38,82 +38,34 @@ First of all you need to copy files to your project and then follow simple steps
 \
 \pard\tx543\pardeftab543\pardirnatural\partightenfactor0
 
-\f1\fs22 \cf4 \cb3     \cf2 private\cf4  \cf2 func\cf4  createDataSource() \{
+\f1\fs22 \cf4 \cb3     \cf2 private\cf4  \cf2 func\cf4  createDataSource(from list: [\cf5 Example\cf4 ]) -> \cf5 TableViewArrayDataSource\cf4  \{
 \f0\fs24 \cf0 \
 
-\f1\fs22 \cf4         \cf2 var\cf4  sections = [\cf5 SectionModel\cf4 ]()
+\f1\fs22 \cf4         \cf2 var\cf4  items = [\cf5 DataSourceObjectPresenter\cf4 ]()
 \f0\fs24 \cf0 \
 
-\f1\fs22 \cf4         \cf2 for\cf4  s \cf2 in\cf4  \cf6 0\cf4 ...\cf6 2\cf4  \{
+\f1\fs22 \cf4         \cf2 for\cf4  item \cf2 in\cf4  list \{
 \f0\fs24 \cf0 \
 
-\f1\fs22 \cf4             \cf2 let\cf4  section = \cf5 newSection\cf4 (with: s)
+\f1\fs22 \cf4             \cf2 let\cf4  dataSourceModel = \cf5 MainMenuCellPresenter\cf4 (with: item, cellIdentifier: \cf5 MainMenuCell\cf4 .\cf5 reuseIdentifier\cf4 )
 \f0\fs24 \cf0 \
 
-\f1\fs22 \cf4             sections.\cf7 append\cf4 (section)
-\f0\fs24 \cf0 \
-
-\f1\fs22 \cf4         \}
-\f0\fs24 \cf0 \
-
-\f1\fs22 \cf4         \cf5 dataSource\cf4  = \cf5 TableViewArrayDataSource\cf4 (with: sections, featuresProvider: \cf2 self\cf4 )
-\f0\fs24 \cf0 \
-
-\f1\fs22 \cf4         \cf5 view\cf4 ?.\cf5 reload\cf4 (with: \cf5 dataSource\cf4 )
-\f0\fs24 \cf0 \
-
-\f1\fs22 \cf4     \}
-\f0\fs24 \cf0 \
-
-\f1\fs22 \cf4     
-\f0\fs24 \cf0 \
-
-\f1\fs22 \cf4     \cf2 private\cf4  \cf2 func\cf4  newSection(with index: \cf7 Int\cf4 ) -> \cf5 SectionModel\cf4  \{
-\f0\fs24 \cf0 \
-
-\f1\fs22 \cf4         \cf2 var\cf4  items = [\cf5 UserDataSourceModel\cf4 ]()
-\f0\fs24 \cf0 \
-
-\f1\fs22 \cf4         \cf2 for\cf4  i \cf2 in\cf4  \cf6 0\cf4 ...\cf6 3\cf4  \{
-\f0\fs24 \cf0 \
-
-\f1\fs22 \cf4             \cf2 let\cf4  indexPath = \cf7 IndexPath\cf4 (row: i, section: index)
-\f0\fs24 \cf0 \
-
-\f1\fs22 \cf4             \cf2 let\cf4  model = \cf5 newDataSourceModel\cf4 (for: indexPath)
-\f0\fs24 \cf0 \
-
-\f1\fs22 \cf4             items.\cf7 append\cf4 (model)
+\f1\fs22 \cf4             items.\cf6 append\cf4 (dataSourceModel)
 \f0\fs24 \cf0 \
 
 \f1\fs22 \cf4         \}
 \f0\fs24 \cf0 \
 
-\f1\fs22 \cf4         \cf2 return\cf4  \cf5 SectionModel\cf4 (withItems: items)
+\f1\fs22 \cf4         \cf2 let\cf4  section = \cf5 SectionModel\cf4 (withItems: items)
 \f0\fs24 \cf0 \
 
-\f1\fs22 \cf4     \}
+\f1\fs22 \cf4         \cf2 return\cf4  \cf5 TableViewArrayDataSource\cf4 (with: [section])
 \f0\fs24 \cf0 \
 
-\f1\fs22 \cf4     
-\f0\fs24 \cf0 \
+\f1\fs22 \cf4     \}\
+\pard\tx543\pardeftab543\pardirnatural\partightenfactor0
 
-\f1\fs22 \cf4     \cf2 private\cf4  \cf2 func\cf4  newDataSourceModel(for indexPath: \cf7 IndexPath\cf4 ) -> \cf5 UserDataSourceModel\cf4  \{
-\f0\fs24 \cf0 \
-
-\f1\fs22 \cf4         \cf2 let\cf4  model = \cf5 UserDataSourceModel\cf4 (model: \cf5 User\cf4 (firstName: \cf8 "index \cf4 \\\cf8 (\cf4 indexPath.\cf7 row\cf8 )"\cf4 , lastName: \cf8 "section \cf4 \\\cf8 (\cf4 indexPath.\cf7 section\cf8 )"\cf4 ),
-\f0\fs24 \cf0 \
-
-\f1\fs22 \cf4                                           reuseIdentifier: \cf5 UserCell\cf4 .\cf5 reuseIdentifier\cf4 )
-\f0\fs24 \cf0 \
-
-\f1\fs22 \cf4         \cf2 return\cf4  model
-\f0\fs24 \cf0 \
-
-\f1\fs22 \cf4     \}
 \f0\i\fs24 \cf0 \cb1 \
-\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
-\cf0 \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 
 \i0 \cf0 3.3 Configure table view
@@ -122,13 +74,13 @@ First of all you need to copy files to your project and then follow simple steps
 \cf0 \
 \pard\tx543\pardeftab543\pardirnatural\partightenfactor0
 
-\f1\i0\fs22 \cf4 \cb3     \cf2 private\cf4  \cf2 func\cf4  setupTableView() \{
+\f1\i0\fs22 \cf4 \cb3     \cf2 private\cf4  \cf2 func\cf4  setup(tableView: \cf6 UITableView\cf4 ) \{
 \f0\fs24 \cf0 \
 
-\f1\fs22 \cf4         \cf2 let\cf4  cellNib = \cf7 UINib\cf4 (nibName: \cf5 UserCell\cf4 .\cf5 nibName\cf4 , bundle: \cf2 nil\cf4 )
+\f1\fs22 \cf4         \cf2 let\cf4  cellNib = \cf6 UINib\cf4 (nibName: \cf5 MainMenuCell\cf4 .\cf5 nibName\cf4 , bundle: \cf2 nil\cf4 )
 \f0\fs24 \cf0 \
 
-\f1\fs22 \cf4         \cf5 tableView\cf4 .\cf7 register\cf4 (cellNib, forCellReuseIdentifier: \cf5 UserCell\cf4 .\cf5 reuseIdentifier\cf4 )
+\f1\fs22 \cf4         tableView.\cf6 register\cf4 (cellNib, forCellReuseIdentifier: \cf5 MainMenuCell\cf4 .\cf5 reuseIdentifier\cf4 )
 \f0\fs24 \cf0 \
 
 \f1\fs22 \cf4     \}
@@ -137,37 +89,60 @@ First of all you need to copy files to your project and then follow simple steps
 \cf0 \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 
-\i0 \cf0 3.4 Create cell and data source model class\
+\i0 \cf0 3.4 Create presenter and cell\
 \
-ConfigurableCell is protocol which should be supported by your cell in order to configure cell from data source automatically\
-\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+Make sure your cell conforms all 3 protocols(
+\f1\fs22 \cf5 \cb3 DataSourceObjectInterface\cf4 , \cf5 Reusable\cf4 , \cf5 Nibable
+\f0\fs24 \cf0 \cb1 )\
+\pard\tx543\pardeftab543\pardirnatural\partightenfactor0
+
+\f1\fs22 \cf5 \cb3 MainMenuCellInterface
+\f0\fs24 \cf0 \cb1  - protocol that defines your interface methods\
+\pard\tx543\pardeftab543\pardirnatural\partightenfactor0
 
 \i \cf0 \
 \pard\tx543\pardeftab543\pardirnatural\partightenfactor0
 
-\f1\i0\fs22 \cf2 \cb3 import\cf4  UIKit
+\f1\i0\fs22 \cf2 \cb3 class\cf4  MainMenuCell: \cf6 UITableViewCell\cf4 , \cf5 DataSourceObjectInterface\cf4 , \cf5 Reusable\cf4 , \cf5 Nibable\cf4 , \cf5 MainMenuCellInterface\cf4  \{
 \f0\fs24 \cf0 \
 
-\f1\fs22 \cf2 import\cf4  Foundation
-\f0\fs24 \cf0 \
-\
-
-\f1\fs22 \cf2 class\cf4  UserCell: \cf7 UITableViewCell\cf4 , \cf5 ConfigurableCell\cf4  \{
+\f1\fs22 \cf4     
 \f0\fs24 \cf0 \
 
-\f1\fs22 \cf4         
+\f1\fs22 \cf4     \cf2 var\cf4  presenter: \cf5 MainMenuCellOutput\cf4 ?
 \f0\fs24 \cf0 \
 
-\f1\fs22 \cf4     \cf2 func\cf4  configure<T>(viewModel: \cf5 T\cf4 ) \{
+\f1\fs22 \cf4     
 \f0\fs24 \cf0 \
 
-\f1\fs22 \cf4         \cf2 guard\cf4  \cf2 let\cf4  viewModel = viewModel \cf2 as\cf4 ? \cf5 UserCellViewModelDisplaying\cf4  \cf2 else\cf4  \{ \cf2 return\cf4  \}
+\f1\fs22 \cf4     \cf7 // MARK: - DataSourceObjectInterface -
 \f0\fs24 \cf0 \
 
-\f1\fs22 \cf4         \cf7 textLabel\cf4 ?.\cf7 text\cf4  = viewModel.\cf5 firstName
+\f1\fs22 \cf4     
 \f0\fs24 \cf0 \
 
-\f1\fs22 \cf4         \cf7 detailTextLabel\cf4 ?.\cf7 text\cf4  = viewModel.\cf5 lastName
+\f1\fs22 \cf4     \cf2 func\cf4  set(presenter: \cf5 DataSourceObjectPresenter\cf4 ) \{
+\f0\fs24 \cf0 \
+
+\f1\fs22 \cf4         \cf2 self\cf4 .\cf5 presenter\cf4  = presenter \cf2 as\cf4 ? \cf5 MainMenuCellOutput
+\f0\fs24 \cf0 \
+
+\f1\fs22 \cf4     \}
+\f0\fs24 \cf0 \
+
+\f1\fs22 \cf4     
+\f0\fs24 \cf0 \
+
+\f1\fs22 \cf4     \cf7 // MARK: - MainMenuCellInterface -
+\f0\fs24 \cf0 \
+
+\f1\fs22 \cf4     
+\f0\fs24 \cf0 \
+
+\f1\fs22 \cf4     \cf2 func\cf4  set(\cf2 _\cf4  title: \cf6 String\cf4 ?) \{
+\f0\fs24 \cf0 \
+
+\f1\fs22 \cf4         \cf6 textLabel\cf4 ?.\cf6 text\cf4  = title
 \f0\fs24 \cf0 \
 
 \f1\fs22 \cf4     \}
@@ -177,35 +152,34 @@ ConfigurableCell is protocol which should be supported by your cell in order to 
 \f0\fs24 \cf0 \
 
 \f1\fs22 \cf4 \}
-\f0\fs24 \cf0 \
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
-\cf0 \cb1 \
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\f0\i\fs24 \cf0 \cb1 \
+\
 
-\f1\fs22 \cf0 UserCellViewModelDisplaying is protocol that describes what your cell can get from data source model\
-DataSourceModel is protocol that describes how to display cell. ReuseIdentifier tells what cell should be created for this model
-\f0\i\fs24 \
-\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
-\cf0 \
+\i0 Make sure your presenter conforms 
+\f1\fs22 \cf6 \cb3 DataSourceObjectPresenter
+\f0\i\fs24 \cf0 \cb1 \
+\
+
+\f1\i0\fs22 \cf5 \cb3 MainMenuCellInterface
+\f0\fs24 \cf0 \cb1  - protocol that defines your interface methods
+\i \
 \pard\tx543\pardeftab543\pardirnatural\partightenfactor0
 
-\f1\i0\fs22 \cf2 \cb3 import\cf4  UIKit
-\f0\fs24 \cf0 \
-
-\f1\fs22 \cf2 import\cf4  Foundation
-\f0\fs24 \cf0 \
+\f1\i0\fs22 \cf6 \cb3 MainMenuCellOutput
+\f0\fs24 \cf0 \cb1  - protocol that defines your presenter methods
+\i \
 \
+\pard\tx543\pardeftab543\pardirnatural\partightenfactor0
 
-\f1\fs22 \cf2 protocol\cf4  UserCellViewModelDisplaying \{
+\f1\i0\fs22 \cf2 \cb3 protocol\cf4  MainMenuCellInterface: \cf6 class \{
 \f0\fs24 \cf0 \
+\pard\tx543\pardeftab543\pardirnatural\partightenfactor0
 
-\f1\fs22 \cf4     
+\f1\fs22 \cf6  \cf4    
 \f0\fs24 \cf0 \
+\pard\tx543\pardeftab543\pardirnatural\partightenfactor0
 
-\f1\fs22 \cf4     \cf2 var\cf4  firstName: \cf7 String\cf4 ? \{ \cf2 get\cf4  \}
-\f0\fs24 \cf0 \
-
-\f1\fs22 \cf4     \cf2 var\cf4  lastName: \cf7 String\cf4 ? \{ \cf2 get\cf4  \}
+\f1\fs22 \cf4     \cf2 func\cf4  set(\cf2 _\cf4  title: \cf6 String\cf4 ?)
 \f0\fs24 \cf0 \
 
 \f1\fs22 \cf4     
@@ -215,28 +189,74 @@ DataSourceModel is protocol that describes how to display cell. ReuseIdentifier 
 \f0\fs24 \cf0 \
 \
 
-\f1\fs22 \cf2 class\cf4  UserDataSourceModel: \cf5 DataSourceModel\cf4  \{
+\f1\fs22 \cf2 protocol\cf4  MainMenuCellOutput \{
 \f0\fs24 \cf0 \
 
 \f1\fs22 \cf4     
 \f0\fs24 \cf0 \
 
-\f1\fs22 \cf4     \cf2 private(set)\cf4  \cf2 var\cf4  reuseIdentifier: \cf7 String
+\f1\fs22 \cf4 \}
 \f0\fs24 \cf0 \
+\
 
-\f1\fs22 \cf4     \cf2 private(set)\cf4  \cf2 var\cf4  model: \cf5 User
+\f1\fs22 \cf2 class\cf4  MainMenuCellPresenter: \cf6 DataSourceObjectPresenter\cf4  \{
 \f0\fs24 \cf0 \
 
 \f1\fs22 \cf4     
 \f0\fs24 \cf0 \
 
-\f1\fs22 \cf4     \cf2 init\cf4 (model: \cf5 User\cf4 , reuseIdentifier: \cf7 String\cf4 ) \{
+\f1\fs22 \cf4     \cf2 private\cf4  \cf2 weak\cf4  \cf2 var\cf4  view: \cf6 MainMenuCellInterface\cf4 ?
 \f0\fs24 \cf0 \
 
-\f1\fs22 \cf4         \cf2 self\cf4 .\cf5 model\cf4  = model
+\f1\fs22 \cf4     
 \f0\fs24 \cf0 \
 
-\f1\fs22 \cf4         \cf2 self\cf4 .\cf5 reuseIdentifier\cf4  = reuseIdentifier
+\f1\fs22 \cf4     \cf2 private(set)\cf4  \cf2 var\cf4  reuseIdentifier: \cf6 String
+\f0\fs24 \cf0 \
+
+\f1\fs22 \cf4     \cf2 private(set)\cf4  \cf2 var\cf4  model: \cf6 Example
+\f0\fs24 \cf0 \
+
+\f1\fs22 \cf4     
+\f0\fs24 \cf0 \
+
+\f1\fs22 \cf4     \cf2 init\cf4 (with objectModel: \cf6 Example\cf4 , cellIdentifier: \cf6 String\cf4 ) \{
+\f0\fs24 \cf0 \
+
+\f1\fs22 \cf4         \cf2 self\cf4 .model = objectModel
+\f0\fs24 \cf0 \
+
+\f1\fs22 \cf4         \cf2 self\cf4 .reuseIdentifier = cellIdentifier
+\f0\fs24 \cf0 \
+
+\f1\fs22 \cf4     \}
+\f0\fs24 \cf0 \
+
+\f1\fs22 \cf4     
+\f0\fs24 \cf0 \
+
+\f1\fs22 \cf4     \cf7 // MARK: - DataSourceObjectPresenter -
+\f0\fs24 \cf0 \
+
+\f1\fs22 \cf4     
+\f0\fs24 \cf0 \
+
+\f1\fs22 \cf4     \cf2 func\cf4  set(view: \cf6 UIView\cf4 ) \{
+\f0\fs24 \cf0 \
+
+\f1\fs22 \cf4         \cf2 self\cf4 .view = view \cf2 as\cf4 ? \cf6 MainMenuCellInterface
+\f0\fs24 \cf0 \
+
+\f1\fs22 \cf4     \}
+\f0\fs24 \cf0 \
+
+\f1\fs22 \cf4     
+\f0\fs24 \cf0 \
+
+\f1\fs22 \cf4     \cf2 func\cf4  configure() \{
+\f0\fs24 \cf0 \
+
+\f1\fs22 \cf4         view?.set(model.title)
 \f0\fs24 \cf0 \
 
 \f1\fs22 \cf4     \}
@@ -248,29 +268,14 @@ DataSourceModel is protocol that describes how to display cell. ReuseIdentifier 
 \f1\fs22 \cf4 \}
 \f0\fs24 \cf0 \
 \
+\pard\tx543\pardeftab543\pardirnatural\partightenfactor0
 
-\f1\fs22 \cf2 extension\cf4  \cf5 UserDataSourceModel\cf4 : \cf5 UserCellViewModelDisplaying\cf4  \{
+\f1\fs22 \cf7 // MARK: - MainMenuCellOutput -
 \f0\fs24 \cf0 \
+\
+\pard\tx543\pardeftab543\pardirnatural\partightenfactor0
 
-\f1\fs22 \cf4     
-\f0\fs24 \cf0 \
-
-\f1\fs22 \cf4     \cf2 var\cf4  firstName: \cf7 String\cf4 ? \{
-\f0\fs24 \cf0 \
-
-\f1\fs22 \cf4         \cf2 return\cf4  \cf5 model\cf4 .\cf5 firstName
-\f0\fs24 \cf0 \
-
-\f1\fs22 \cf4     \}
-\f0\fs24 \cf0 \
-
-\f1\fs22 \cf4     \cf2 var\cf4  lastName: \cf7 String\cf4 ? \{
-\f0\fs24 \cf0 \
-
-\f1\fs22 \cf4         \cf2 return\cf4  \cf5 model\cf4 .\cf5 lastName
-\f0\fs24 \cf0 \
-
-\f1\fs22 \cf4     \}
+\f1\fs22 \cf2 extension\cf4  \cf6 MainMenuCellPresenter\cf4 : \cf6 MainMenuCellOutput\cf4  \{
 \f0\fs24 \cf0 \
 
 \f1\fs22 \cf4     
@@ -294,10 +299,10 @@ DataSourceModel is protocol that describes how to display cell. ReuseIdentifier 
 \cf0 \
 \pard\tx543\pardeftab543\pardirnatural\partightenfactor0
 
-\f1\i0\fs22 \cf4 \cb3     \cf2 func\cf4  tableView(\cf2 _\cf4  tableView: \cf7 UITableView\cf4 , editingStyleForRowAt indexPath: \cf7 IndexPath\cf4 ) -> \cf7 UITableViewCellEditingStyle\cf4  \{
+\f1\i0\fs22 \cf4 \cb3     \cf2 func\cf4  tableView(\cf2 _\cf4  tableView: \cf6 UITableView\cf4 , editingStyleForRowAt indexPath: \cf6 IndexPath\cf4 ) -> \cf6 UITableViewCellEditingStyle\cf4  \{
 \f0\fs24 \cf0 \
 
-\f1\fs22 \cf4         \cf2 return\cf4  .\cf7 none
+\f1\fs22 \cf4         \cf2 return\cf4  .\cf6 none
 \f0\fs24 \cf0 \
 
 \f1\fs22 \cf4     \}
@@ -306,10 +311,10 @@ DataSourceModel is protocol that describes how to display cell. ReuseIdentifier 
 \f1\fs22 \cf4     
 \f0\fs24 \cf0 \
 
-\f1\fs22 \cf4     \cf2 func\cf4  tableView(\cf2 _\cf4  tableView: \cf7 UITableView\cf4 , didSelectRowAt indexPath: \cf7 IndexPath\cf4 ) \{
+\f1\fs22 \cf4     \cf2 func\cf4  tableView(\cf2 _\cf4  tableView: \cf6 UITableView\cf4 , didSelectRowAt indexPath: \cf6 IndexPath\cf4 ) \{
 \f0\fs24 \cf0 \
 
-\f1\fs22 \cf4         tableView.\cf7 deselectRow\cf4 (at: indexPath, animated: \cf2 false\cf4 )
+\f1\fs22 \cf4         tableView.\cf6 deselectRow\cf4 (at: indexPath, animated: \cf2 false\cf4 )
 \f0\fs24 \cf0 \
 
 \f1\fs22 \cf4     \}
@@ -329,43 +334,43 @@ DataSourceModel is protocol that describes how to display cell. ReuseIdentifier 
 \cf0 \
 \pard\tx543\pardeftab543\pardirnatural\partightenfactor0
 
-\f1\b0\fs22 \cf4 \cb3     \cf9 // Optional for reordering
+\f1\b0\fs22 \cf4 \cb3     \cf7 // Optional for reordering
 \f0\fs24 \cf0 \
 
 \f1\fs22 \cf4     
 \f0\fs24 \cf0 \
 
-\f1\fs22 \cf4     \cf2 func\cf4  tableView(\cf2 _\cf4  tableView: \cf7 UITableView\cf4 ,
+\f1\fs22 \cf4     \cf2 func\cf4  tableView(\cf2 _\cf4  tableView: \cf6 UITableView\cf4 ,
 \f0\fs24 \cf0 \
 
-\f1\fs22 \cf4                    targetIndexPathForMoveFromRowAt sourceIndexPath: \cf7 IndexPath\cf4 ,
+\f1\fs22 \cf4                    targetIndexPathForMoveFromRowAt sourceIndexPath: \cf6 IndexPath\cf4 ,
 \f0\fs24 \cf0 \
 
-\f1\fs22 \cf4                    toProposedIndexPath proposedDestinationIndexPath: \cf7 IndexPath\cf4 ) -> \cf7 IndexPath\cf4  \{
+\f1\fs22 \cf4                    toProposedIndexPath proposedDestinationIndexPath: \cf6 IndexPath\cf4 ) -> \cf6 IndexPath\cf4  \{
 \f0\fs24 \cf0 \
 
-\f1\fs22 \cf4         \cf2 let\cf4  sectionsCount = tableView.\cf7 numberOfSections
+\f1\fs22 \cf4         \cf2 let\cf4  sectionsCount = tableView.\cf6 numberOfSections
 \f0\fs24 \cf0 \
 
-\f1\fs22 \cf4         \cf2 if\cf4  sourceIndexPath.\cf7 section\cf4  != proposedDestinationIndexPath.\cf7 section\cf4  \{
+\f1\fs22 \cf4         \cf2 if\cf4  sourceIndexPath.\cf6 section\cf4  != proposedDestinationIndexPath.\cf6 section\cf4  \{
 \f0\fs24 \cf0 \
 
-\f1\fs22 \cf4             \cf2 let\cf4  rowInSourceSection = sourceIndexPath.\cf7 section\cf4  > proposedDestinationIndexPath.\cf7 section\cf4  ? \cf6 0\cf4  : sectionsCount - \cf6 1
+\f1\fs22 \cf4             \cf2 let\cf4  rowInSourceSection = sourceIndexPath.\cf6 section\cf4  > proposedDestinationIndexPath.\cf6 section\cf4  ? \cf8 0\cf4  : sectionsCount - \cf8 1
 \f0\fs24 \cf0 \
 
-\f1\fs22 \cf4             \cf2 return\cf4  \cf7 IndexPath\cf4 (row: rowInSourceSection, section: sourceIndexPath.\cf7 section\cf4 )
+\f1\fs22 \cf4             \cf2 return\cf4  \cf6 IndexPath\cf4 (row: rowInSourceSection, section: sourceIndexPath.\cf6 section\cf4 )
 \f0\fs24 \cf0 \
 
-\f1\fs22 \cf4         \} \cf2 else\cf4  \cf2 if\cf4  proposedDestinationIndexPath.\cf7 row\cf4  >= sectionsCount \{
+\f1\fs22 \cf4         \} \cf2 else\cf4  \cf2 if\cf4  proposedDestinationIndexPath.\cf6 row\cf4  >= sectionsCount \{
 \f0\fs24 \cf0 \
 
-\f1\fs22 \cf4             \cf2 return\cf4  \cf7 IndexPath\cf4 (row: sectionsCount - \cf6 1\cf4 , section: sourceIndexPath.\cf7 section\cf4 )
+\f1\fs22 \cf4             \cf2 return\cf4  \cf6 IndexPath\cf4 (row: sectionsCount - \cf8 1\cf4 , section: sourceIndexPath.\cf6 section\cf4 )
 \f0\fs24 \cf0 \
 
 \f1\fs22 \cf4         \}
 \f0\fs24 \cf0 \
 
-\f1\fs22 \cf4         \cf9 // Allow the proposed destination.
+\f1\fs22 \cf4         \cf7 // Allow the proposed destination.
 \f0\fs24 \cf0 \
 
 \f1\fs22 \cf4         \cf2 return\cf4  proposedDestinationIndexPath
@@ -386,7 +391,7 @@ Support TableViewRowEditing protocol in order to delete or insert cells. Set isE
 \f0\fs24 \
 \pard\tx543\pardeftab543\pardirnatural\partightenfactor0
 
-\f1\fs22 \cf2 \cb3 var\cf4  edititngHandler: ((\cf7 UITableViewCellEditingStyle\cf4 , \cf7 IndexPath\cf4 ) -> \cf7 Void\cf4 )? \{
+\f1\fs22 \cf2 \cb3 var\cf4  edititngHandler: ((\cf6 UITableViewCellEditingStyle\cf4 , \cf6 IndexPath\cf4 ) -> \cf6 Void\cf4 )? \{
 \f0\fs24 \cf0 \
 
 \f1\fs22 \cf4         \cf2 return\cf4  \{ [weak \cf2 self\cf4 ] (edititngStyle, indexPath) \cf2 in
@@ -395,7 +400,7 @@ Support TableViewRowEditing protocol in order to delete or insert cells. Set isE
 \f1\fs22 \cf4             \cf2 switch\cf4  edititngStyle \{
 \f0\fs24 \cf0 \
 
-\f1\fs22 \cf4             \cf2 case\cf4  .\cf7 delete\cf4 :
+\f1\fs22 \cf4             \cf2 case\cf4  .\cf6 delete\cf4 :
 \f0\fs24 \cf0 \
 
 \f1\fs22 \cf4                 \cf2 self\cf4 ?.\cf5 dataSource\cf4 .\cf5 remove\cf4 (itemAt: indexPath)
@@ -404,7 +409,7 @@ Support TableViewRowEditing protocol in order to delete or insert cells. Set isE
 \f1\fs22 \cf4                 \cf2 self\cf4 ?.\cf5 view\cf4 ?.\cf5 deleteRow\cf4 (at: indexPath)
 \f0\fs24 \cf0 \
 
-\f1\fs22 \cf4             \cf2 case\cf4  .\cf7 insert\cf4 :
+\f1\fs22 \cf4             \cf2 case\cf4  .\cf6 insert\cf4 :
 \f0\fs24 \cf0 \
 
 \f1\fs22 \cf4                 \cf2 if\cf4  \cf2 let\cf4  viewModel = \cf2 self\cf4 ?.\cf5 newDataSourceModel\cf4 (for: indexPath) \{
@@ -422,10 +427,10 @@ Support TableViewRowEditing protocol in order to delete or insert cells. Set isE
 \f1\fs22 \cf4                 \}
 \f0\fs24 \cf0 \
 
-\f1\fs22 \cf4             \cf2 case\cf4  .\cf7 none\cf4 :
+\f1\fs22 \cf4             \cf2 case\cf4  .\cf6 none\cf4 :
 \f0\fs24 \cf0 \
 
-\f1\fs22 \cf4                 \cf7 print\cf4 (\cf8 "none"\cf4 )
+\f1\fs22 \cf4                 \cf6 print\cf4 (\cf9 "none"\cf4 )
 \f0\fs24 \cf0 \
 
 \f1\fs22 \cf4             \}
@@ -442,16 +447,16 @@ UI update for delete\
 \
 \pard\tx543\pardeftab543\pardirnatural\partightenfactor0
 
-\f1\fs22 \cf4 \cb3     \cf2 func\cf4  deleteRow(at indexPath: \cf7 IndexPath\cf4 ) \{
+\f1\fs22 \cf4 \cb3     \cf2 func\cf4  deleteRow(at indexPath: \cf6 IndexPath\cf4 ) \{
 \f0\fs24 \cf0 \
 
-\f1\fs22 \cf4         \cf5 tableView\cf4 .\cf7 beginUpdates\cf4 ()
+\f1\fs22 \cf4         \cf5 tableView\cf4 .\cf6 beginUpdates\cf4 ()
 \f0\fs24 \cf0 \
 
-\f1\fs22 \cf4         \cf5 tableView\cf4 .\cf7 deleteRows\cf4 (at: [indexPath], with: .\cf7 right\cf4 )
+\f1\fs22 \cf4         \cf5 tableView\cf4 .\cf6 deleteRows\cf4 (at: [indexPath], with: .\cf6 right\cf4 )
 \f0\fs24 \cf0 \
 
-\f1\fs22 \cf4         \cf5 tableView\cf4 .\cf7 endUpdates\cf4 ()
+\f1\fs22 \cf4         \cf5 tableView\cf4 .\cf6 endUpdates\cf4 ()
 \f0\fs24 \cf0 \
 
 \f1\fs22 \cf4     \}
@@ -462,16 +467,16 @@ UI update for insert\
 \
 \pard\tx543\pardeftab543\pardirnatural\partightenfactor0
 
-\f1\fs22 \cf4 \cb3     \cf2 func\cf4  insertRows(at indexPathes: [\cf7 IndexPath\cf4 ]) \{
+\f1\fs22 \cf4 \cb3     \cf2 func\cf4  insertRows(at indexPathes: [\cf6 IndexPath\cf4 ]) \{
 \f0\fs24 \cf0 \
 
-\f1\fs22 \cf4         \cf5 tableView\cf4 .\cf7 beginUpdates\cf4 ()
+\f1\fs22 \cf4         \cf5 tableView\cf4 .\cf6 beginUpdates\cf4 ()
 \f0\fs24 \cf0 \
 
-\f1\fs22 \cf4         \cf5 tableView\cf4 .\cf7 insertRows\cf4 (at: indexPathes, with: .\cf7 left\cf4 )
+\f1\fs22 \cf4         \cf5 tableView\cf4 .\cf6 insertRows\cf4 (at: indexPathes, with: .\cf6 left\cf4 )
 \f0\fs24 \cf0 \
 
-\f1\fs22 \cf4         \cf5 tableView\cf4 .\cf7 endUpdates\cf4 ()
+\f1\fs22 \cf4         \cf5 tableView\cf4 .\cf6 endUpdates\cf4 ()
 \f0\fs24 \cf0 \
 
 \f1\fs22 \cf4     \}
@@ -484,7 +489,7 @@ Support TableViewRowMoving protocol in order to move cells. Set isEdititng to tr
 \
 \pard\tx543\pardeftab543\pardirnatural\partightenfactor0
 
-\f1\fs22 \cf4 \cb3     \cf2 var\cf4  canMoveRow: ((\cf7 IndexPath\cf4 ) -> \cf7 Bool\cf4 )? \{
+\f1\fs22 \cf4 \cb3     \cf2 var\cf4  canMoveRow: ((\cf6 IndexPath\cf4 ) -> \cf6 Bool\cf4 )? \{
 \f0\fs24 \cf0 \
 
 \f1\fs22 \cf4         \cf2 return\cf4  \{ [weak \cf2 self\cf4 ] indexPath \cf2 in
@@ -502,7 +507,7 @@ Support TableViewRowMoving protocol in order to move cells. Set isEdititng to tr
 \f1\fs22 \cf4     
 \f0\fs24 \cf0 \
 
-\f1\fs22 \cf4     \cf2 var\cf4  movingHandler: ((\cf7 IndexPath\cf4 , \cf7 IndexPath\cf4 ) -> \cf7 Void\cf4 )? \{
+\f1\fs22 \cf4     \cf2 var\cf4  movingHandler: ((\cf6 IndexPath\cf4 , \cf6 IndexPath\cf4 ) -> \cf6 Void\cf4 )? \{
 \f0\fs24 \cf0 \
 
 \f1\fs22 \cf4         \cf2 return\cf4  \{ [weak \cf2 self\cf4 ] (sourceIndexPath, destinationIndexPath) \cf2 in
