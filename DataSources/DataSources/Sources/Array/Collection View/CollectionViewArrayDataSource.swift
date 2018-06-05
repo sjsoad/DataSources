@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class CollectionViewArrayDataSource: NSObject, ArrayDataSourceRepresentable {
+open class CollectionViewArrayDataSource: NSObject, ArrayDataSourceRepresentable {    
     
     private(set) public var sections: [SectionModel] = []
     private(set) var movingProvider: CollectionViewRowMoving?
@@ -76,17 +76,13 @@ open class CollectionViewArrayDataSource: NSObject, ArrayDataSourceRepresentable
     
     // MARK: - Private
     
-    private func model(for indexPath: IndexPath, kind: String) -> DataSourceObjectPresenter? {
+    private func presenter(for indexPath: IndexPath, kind: String) -> DataSourceObjectPresenter? {
         guard sections.indices.contains(indexPath.section) else { return nil }
         let sectionModel = sections[indexPath.section]
         if kind == UICollectionElementKindSectionHeader {
-            guard let header = sectionModel.header,
-                let model = header.headerModel else { return nil }
-            return model
+            return sectionModel.header
         } else if kind == UICollectionElementKindSectionFooter {
-            guard let footer = sectionModel.footer,
-                let model = footer.footerModel else { return nil }
-            return model
+            return sectionModel.footer
         }
         return nil
     }
@@ -100,12 +96,12 @@ extension CollectionViewArrayDataSource: UICollectionViewDataSource {
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let presenter = itemAtIndexPath(indexPath: indexPath) {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: presenter.reuseIdentifier,
-                                                          for: indexPath)
-            if let configurableCell = cell as? ConfigurableCell {
-                configurableCell.configure()
-            }
+        if let presenter: DataSourceObjectPresenter = itemAtIndexPath(indexPath: indexPath) {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: presenter.reuseIdentifier, for: indexPath)
+            guard let interface = cell as? DataSourceObjectInterface else { return UICollectionViewCell() }
+            interface.set(presenter: presenter)
+            presenter.set(view: cell)
+            presenter.configure()
             return cell
         }
         return UICollectionViewCell()
@@ -115,16 +111,14 @@ extension CollectionViewArrayDataSource: UICollectionViewDataSource {
         return numberOfSections()
     }
     
-    public func collectionView(_ collectionView: UICollectionView,
-                        viewForSupplementaryElementOfKind kind: String,
-                        at indexPath: IndexPath) -> UICollectionReusableView {
-        guard let presenter = self.model(for: indexPath, kind: kind) else { return UICollectionReusableView() }
-        let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-                                                                   withReuseIdentifier: presenter.reuseIdentifier,
-                                                                   for: indexPath)
-        if let configurableView = view as? ConfigurableView {
-            configurableView.configure()
-        }
+    public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String,
+                               at indexPath: IndexPath) -> UICollectionReusableView {
+        guard let presenter = presenter(for: indexPath, kind: kind) else { return UICollectionReusableView() }
+        let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: presenter.reuseIdentifier, for: indexPath)
+        guard let interface = view as? DataSourceObjectInterface else { return UICollectionReusableView() }
+        interface.set(presenter: presenter)
+        presenter.set(view: view)
+        presenter.configure()
         return view
     }
     

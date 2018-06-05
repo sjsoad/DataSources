@@ -12,12 +12,12 @@ open class SectionModel: NSObject, DataSourceSectionRepresentable, DataSourceSec
 DataSourceSectionInsertable, DataSourceSectionReordering {
     
     private(set) public var items: [DataSourceObjectPresenter]
-    private(set) public var header: SectionHeader?
-    private(set) public var footer: SectionFooter?
+    private(set) public var header: SectionHeaderPresenter?
+    private(set) public var footer: SectionFooterPresenter?
     
     public init(withItems items: [DataSourceObjectPresenter],
-                header: SectionHeader? = nil,
-                footer: SectionFooter? = nil) {
+                header: SectionHeaderPresenter? = nil,
+                footer: SectionFooterPresenter? = nil) {
         self.items = items
         self.header = header
         self.footer = footer

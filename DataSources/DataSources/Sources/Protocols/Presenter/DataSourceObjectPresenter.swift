@@ -9,12 +9,9 @@
 import UIKit
 import Foundation
 
-public protocol DataSourceObjectPresenter {
-
-//    associatedtype ViewType
-//    associatedtype ModelType
+public protocol DataSourceObjectPresenter: Configurable {
     
-    var view: ReusableCell? { get set }
-    var model: Any { get set }
+    var reuseIdentifier: String { get }
+    func set(view: UIView)
     
 }

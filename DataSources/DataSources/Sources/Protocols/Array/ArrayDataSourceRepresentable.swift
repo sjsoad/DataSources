@@ -92,13 +92,13 @@ public extension ArrayDataSourceRepresentable where Self: NSObject {
         return items.count
     }
     
-    func itemAtIndexPath(indexPath: IndexPath) -> DataSourceObjectPresenter? {
+    func itemAtIndexPath<PresenterType>(indexPath: IndexPath) -> PresenterType? {
         guard sections.indices.contains(indexPath.section) else { return nil }
         let section = sections[indexPath.section]
         let items = section.items
         guard items.indices.contains(indexPath.row) else { return nil }
         let item = items[indexPath.row]
-        return item
+        return item as? PresenterType
     }
     
     // MARK: - DataSourceAppendable -

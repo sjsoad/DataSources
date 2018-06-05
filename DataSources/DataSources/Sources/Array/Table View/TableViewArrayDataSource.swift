@@ -97,19 +97,18 @@ extension TableViewArrayDataSource: UITableViewDataSource {
         return sectionModel.footer?.footerTitle
     }
     
-    public func tableView(_ tableView: UITableView,
-                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let presenter = itemAtIndexPath(indexPath: indexPath),
-            let cell = tableView.dequeueReusableCell(withIdentifier: presenter.reuseIdentifier),
-            let configurableCell = cell as? ConfigurableCell {
-            configurableCell.configure()
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let presenter: DataSourceObjectPresenter = itemAtIndexPath(indexPath: indexPath),
+            let cell = tableView.dequeueReusableCell(withIdentifier: presenter.reuseIdentifier), let interface = cell as? DataSourceObjectInterface {
+            interface.set(presenter: presenter)
+            presenter.set(view: cell)
+            presenter.configure()
             return cell
         }
         return UITableViewCell()
     }
     
-    public func tableView(_ tableView: UITableView,
-                   numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return numberOfItemsInSection(sectionIndex: section)
     }
     

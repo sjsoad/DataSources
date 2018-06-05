@@ -14,8 +14,8 @@ public typealias DataSourceSectionChangeHandler = (([Int]) -> Void)
 public protocol DataSourceSectionRepresentable {
 
     var items: [DataSourceObjectPresenter] { get }
-    var header: SectionHeader? { get }
-    var footer: SectionFooter? { get }
+    var header: SectionHeaderPresenter? { get }
+    var footer: SectionFooterPresenter? { get }
     
 }
 
