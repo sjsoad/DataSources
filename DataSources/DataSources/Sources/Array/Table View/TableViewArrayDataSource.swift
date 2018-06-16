@@ -26,13 +26,13 @@ open class TableViewArrayDataSource: NSObject, ArrayDataSourceRepresentable {
         guard !newSections.isEmpty else { return }
         let lastIndex = sections.count - 1
         self.sections.append(contentsOf: newSections)
-        let diff = Array(lastIndex + 1...lastIndex + newSections.count)
+        let diff = IndexSet(lastIndex + 1...lastIndex + newSections.count)
         handler?(diff)
     }
     
     public func append(newSection: SectionModel, handler: DataSourceChangeHandler?) {
         self.sections.append(newSection)
-        let diff = [self.sections.count - 1]
+        let diff = IndexSet([self.sections.count - 1])
         handler?(diff)
     }
     
@@ -54,7 +54,7 @@ open class TableViewArrayDataSource: NSObject, ArrayDataSourceRepresentable {
     public func insert(newSections: [SectionModel], at index: Int, handler: DataSourceChangeHandler?) {
         guard !newSections.isEmpty, sections.indices.contains(index) || index == 0 else { return }
         sections.insert(contentsOf: newSections, at: index)
-        let diff = Array(index...index + sections.count - 1)
+        let diff = IndexSet(index...index + sections.count - 1)
         handler?(diff)
     }
     

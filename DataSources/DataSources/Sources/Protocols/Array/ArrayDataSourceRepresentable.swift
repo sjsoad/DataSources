@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 
 public typealias DataSourceSectionsChangeHandler = (([IndexPath]) -> Void)
-public typealias DataSourceChangeHandler = (([Int]) -> Void)
+public typealias DataSourceChangeHandler = ((IndexSet) -> Void)
 
 public protocol ArrayDataSourceRepresentable: DataSourceRepresentable, DataSourceAppendable, DataSourceRemovable, DataSourceInsertable,
 DataSourceReordering {
