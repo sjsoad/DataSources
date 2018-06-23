@@ -10,7 +10,7 @@ import UIKit
 
 open class TableViewArrayDataSource: NSObject, ArrayDataSourceRepresentable {
 
-    private(set) public var sections: [SectionModel] = []
+    public private(set) var sections: [SectionModel] = []
     private var editingProvider: TableViewRowEditing?
     private var movingProvider: TableViewRowMoving?
     

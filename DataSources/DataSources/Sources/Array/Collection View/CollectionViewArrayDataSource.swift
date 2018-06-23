@@ -10,7 +10,7 @@ import UIKit
 
 open class CollectionViewArrayDataSource: NSObject, ArrayDataSourceRepresentable {
     
-    private(set) public var sections: [SectionModel] = []
+    public private(set) var sections: [SectionModel] = []
     private(set) var movingProvider: CollectionViewRowMoving?
     
     public init(with sections: [SectionModel], movingProvider: CollectionViewRowMoving? = nil) {

@@ -11,9 +11,9 @@ import UIKit
 open class SectionModel: NSObject, DataSourceSectionRepresentable, DataSourceSectionAppendable, DataSourceSectionRemovable,
 DataSourceSectionInsertable, DataSourceSectionReordering {
     
-    private(set) public var items: [DataSourceModel]
-    private(set) public var header: SectionHeader?
-    private(set) public var footer: SectionFooter?
+    public private(set) var items: [DataSourceModel]
+    public private(set) var header: SectionHeader?
+    public private(set) var footer: SectionFooter?
     
     public init(withItems items: [DataSourceModel],
                 header: SectionHeader? = nil,
