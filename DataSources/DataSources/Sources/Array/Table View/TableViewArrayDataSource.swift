@@ -26,13 +26,13 @@ open class TableViewArrayDataSource: NSObject, ArrayDataSourceRepresentable {
         guard !newSections.isEmpty else { return }
         let lastIndex = sections.count - 1
         self.sections.append(contentsOf: newSections)
-        let diff = Array(lastIndex + 1...lastIndex + newSections.count)
+        let diff = IndexSet(lastIndex + 1...lastIndex + newSections.count)
         handler?(diff)
     }
     
     public func append(newSection: SectionModel, handler: DataSourceChangeHandler?) {
         self.sections.append(newSection)
-        let diff = [self.sections.count - 1]
+        let diff = IndexSet([self.sections.count - 1])
         handler?(diff)
     }
     
@@ -54,7 +54,7 @@ open class TableViewArrayDataSource: NSObject, ArrayDataSourceRepresentable {
     public func insert(newSections: [SectionModel], at index: Int, handler: DataSourceChangeHandler?) {
         guard !newSections.isEmpty, sections.indices.contains(index) || index == 0 else { return }
         sections.insert(contentsOf: newSections, at: index)
-        let diff = Array(index...index + sections.count - 1)
+        let diff = IndexSet(index...index + sections.count - 1)
         handler?(diff)
     }
     
@@ -97,19 +97,18 @@ extension TableViewArrayDataSource: UITableViewDataSource {
         return sectionModel.footer?.footerTitle
     }
     
-    public func tableView(_ tableView: UITableView,
-                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let model = itemAtIndexPath(indexPath: indexPath),
-            let cell = tableView.dequeueReusableCell(withIdentifier: model.reuseIdentifier),
-            let configurableCell = cell as? ConfigurableCell {
-            configurableCell.configure(viewModel: model)
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let presenter: DataSourceObjectPresenter = itemAtIndexPath(indexPath: indexPath),
+            let cell = tableView.dequeueReusableCell(withIdentifier: presenter.reuseIdentifier), let interface = cell as? DataSourceObjectInterface {
+            interface.set(presenter: presenter)
+            presenter.set(view: cell)
+            presenter.configure()
             return cell
         }
         return UITableViewCell()
     }
     
-    public func tableView(_ tableView: UITableView,
-                   numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return numberOfItemsInSection(sectionIndex: section)
     }
     

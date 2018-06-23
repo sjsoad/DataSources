@@ -11,13 +11,13 @@ import UIKit
 open class SectionModel: NSObject, DataSourceSectionRepresentable, DataSourceSectionAppendable, DataSourceSectionRemovable,
 DataSourceSectionInsertable, DataSourceSectionReordering {
     
-    public private(set) var items: [DataSourceModel]
-    public private(set) var header: SectionHeader?
-    public private(set) var footer: SectionFooter?
+    private(set) public var items: [DataSourceObjectPresenter]
+    private(set) public var header: SectionHeaderPresenter?
+    private(set) public var footer: SectionFooterPresenter?
     
-    public init(withItems items: [DataSourceModel],
-                header: SectionHeader? = nil,
-                footer: SectionFooter? = nil) {
+    public init(withItems items: [DataSourceObjectPresenter],
+                header: SectionHeaderPresenter? = nil,
+                footer: SectionFooterPresenter? = nil) {
         self.items = items
         self.header = header
         self.footer = footer
@@ -25,14 +25,14 @@ DataSourceSectionInsertable, DataSourceSectionReordering {
     
     // MARK: - DataSourceSectionAppendable -
     
-    public func append(newItems: [DataSourceModel], handler: DataSourceSectionChangeHandler?) {
+    public func append(newItems: [DataSourceObjectPresenter], handler: DataSourceSectionChangeHandler?) {
         let lastIndex = items.count - 1
         items.append(contentsOf: newItems)
         let diff = Array(lastIndex + 1...lastIndex + newItems.count)
         handler?(diff)
     }
     
-    public func append(item: DataSourceModel, handler: DataSourceSectionChangeHandler?) {
+    public func append(item: DataSourceObjectPresenter, handler: DataSourceSectionChangeHandler?) {
         items.append(item)
         let diff = [items.count - 1]
         handler?(diff)
@@ -53,14 +53,14 @@ DataSourceSectionInsertable, DataSourceSectionReordering {
     
     // MARK: - DataSourceSectionInsertable -
     
-    public func insert(newItems: [DataSourceModel], at index: Int, handler: DataSourceSectionChangeHandler?) {
+    public func insert(newItems: [DataSourceObjectPresenter], at index: Int, handler: DataSourceSectionChangeHandler?) {
         guard self.items.indices.contains(index) || index == 0 else { return }
         self.items.insert(contentsOf: newItems, at: index)
         let diff = Array(index...index + newItems.count - 1)
         handler?(diff)
     }
     
-    public func insert(item: DataSourceModel, at index: Int, handler: DataSourceSectionChangeHandler?) {
+    public func insert(item: DataSourceObjectPresenter, at index: Int, handler: DataSourceSectionChangeHandler?) {
         guard self.items.indices.contains(index) || index == 0 else { return }
         self.items.insert(item, at: index)
         let diff = [index]
@@ -69,7 +69,7 @@ DataSourceSectionInsertable, DataSourceSectionReordering {
     
     // MARK: - DataSourceSectionReordering -
     
-    public func replace(itemAt index: Int, with item: DataSourceModel) {
+    public func replace(itemAt index: Int, with item: DataSourceObjectPresenter) {
         guard self.items.indices.contains(index) else { return }
         self.items[index] = item
     }
