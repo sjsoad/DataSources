@@ -10,11 +10,11 @@ import UIKit
 
 open class TableViewArrayDataSource: NSObject, ArrayDataSourceRepresentable {
 
-    public private(set) var sections: [SectionModel] = []
+    public private(set) var sections: [SectionRepresentable] = []
     private var editingProvider: TableViewRowEditing?
     private var movingProvider: TableViewRowMoving?
     
-    public init(with sections: [SectionModel], editingProvider: TableViewRowEditing? = nil, movingProvider: TableViewRowMoving? = nil) {
+    public init(with sections: [SectionRepresentable], editingProvider: TableViewRowEditing? = nil, movingProvider: TableViewRowMoving? = nil) {
         self.sections = sections
         self.editingProvider = editingProvider
         self.movingProvider = movingProvider
@@ -22,7 +22,7 @@ open class TableViewArrayDataSource: NSObject, ArrayDataSourceRepresentable {
     
     // MARK: - DataSourceAppendable -
     
-    public func append(newSections: [SectionModel], handler: DataSourceChangeHandler?) {
+    public func append(newSections: [SectionRepresentable], handler: DataSourceChangeHandler?) {
         guard !newSections.isEmpty else { return }
         let lastIndex = sections.count - 1
         self.sections.append(contentsOf: newSections)
@@ -30,7 +30,7 @@ open class TableViewArrayDataSource: NSObject, ArrayDataSourceRepresentable {
         handler?(diff)
     }
     
-    public func append(newSection: SectionModel, handler: DataSourceChangeHandler?) {
+    public func append(newSection: SectionRepresentable, handler: DataSourceChangeHandler?) {
         self.sections.append(newSection)
         let diff = IndexSet([self.sections.count - 1])
         handler?(diff)
@@ -51,21 +51,21 @@ open class TableViewArrayDataSource: NSObject, ArrayDataSourceRepresentable {
  
     // MARK: - DataSourceInsertable -
     
-    public func insert(newSections: [SectionModel], at index: Int, handler: DataSourceChangeHandler?) {
+    public func insert(newSections: [SectionRepresentable], at index: Int, handler: DataSourceChangeHandler?) {
         guard !newSections.isEmpty, sections.indices.contains(index) || index == 0 else { return }
         sections.insert(contentsOf: newSections, at: index)
         let diff = IndexSet(index...index + sections.count - 1)
         handler?(diff)
     }
     
-    public func insert(newSection: SectionModel, at index: Int, handler: DataSourceChangeHandler?) {
+    public func insert(newSection: SectionRepresentable, at index: Int, handler: DataSourceChangeHandler?) {
         self.sections.insert(newSection, at: index)
         handler?([index])
     }
     
     // MARK: - DataSourceReordering -
     
-    public func replace(sectionAt index: Int, with section: SectionModel) {
+    public func replace(sectionAt index: Int, with section: SectionRepresentable) {
         guard sections.indices.contains(index) else { return }
         self.sections[index] = section
     }

@@ -11,7 +11,9 @@ import Foundation
 
 public protocol DataSourceObjectPresenter: Configurable {
     
+    associatedtype InterfaceType
+    
+    var view: InterfaceType? { get set }
     var reuseIdentifier: String { get }
-    func set(view: UIView)
     
 }

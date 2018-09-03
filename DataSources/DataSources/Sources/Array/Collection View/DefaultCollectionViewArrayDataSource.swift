@@ -10,17 +10,17 @@ import UIKit
 
 open class CollectionViewArrayDataSource: NSObject, ArrayDataSourceRepresentable {    
     
-    public private(set) var sections: [SectionModel] = []
+    public private(set) var sections: [SectionRepresentable] = []
     private(set) var movingProvider: CollectionViewRowMoving?
     
-    public init(with sections: [SectionModel], movingProvider: CollectionViewRowMoving? = nil) {
+    public init(with sections: [SectionRepresentable], movingProvider: CollectionViewRowMoving? = nil) {
         self.sections = sections
         self.movingProvider = movingProvider
     }
     
     // MARK: - DataSourceAppendable -
     
-    public func append(newSections: [SectionModel], handler: DataSourceChangeHandler?) {
+    public func append(newSections: [SectionRepresentable], handler: DataSourceChangeHandler?) {
         guard !newSections.isEmpty else { return }
         let lastIndex = sections.count - 1
         self.sections.append(contentsOf: newSections)
@@ -28,7 +28,7 @@ open class CollectionViewArrayDataSource: NSObject, ArrayDataSourceRepresentable
         handler?(diff)
     }
     
-    public func append(newSection: SectionModel, handler: DataSourceChangeHandler?) {
+    public func append(newSection: SectionRepresentable, handler: DataSourceChangeHandler?) {
         self.sections.append(newSection)
         let diff = IndexSet([self.sections.count - 1])
         handler?(diff)
@@ -49,14 +49,14 @@ open class CollectionViewArrayDataSource: NSObject, ArrayDataSourceRepresentable
     
     // MARK: - DataSourceInsertable -
     
-    public func insert(newSections: [SectionModel], at index: Int, handler: DataSourceChangeHandler?) {
+    public func insert(newSections: [SectionRepresentable], at index: Int, handler: DataSourceChangeHandler?) {
         guard !newSections.isEmpty, sections.indices.contains(index) || index == 0 else { return }
         sections.insert(contentsOf: newSections, at: index)
         let diff = IndexSet(index...index + sections.count - 1)
         handler?(diff)
     }
     
-    public func insert(newSection: SectionModel, at index: Int, handler: DataSourceChangeHandler?) {
+    public func insert(newSection: SectionRepresentable, at index: Int, handler: DataSourceChangeHandler?) {
         guard sections.indices.contains(index) || index == 0 else { return }
         self.sections.insert(newSection, at: index)
         handler?([index])
@@ -64,7 +64,7 @@ open class CollectionViewArrayDataSource: NSObject, ArrayDataSourceRepresentable
     
     // MARK: - DataSourceReordering -
     
-    public func replace(sectionAt index: Int, with section: SectionModel) {
+    public func replace(sectionAt index: Int, with section: SectionRepresentable) {
         guard sections.indices.contains(index) else { return }
         self.sections[index] = section
     }
@@ -76,16 +76,16 @@ open class CollectionViewArrayDataSource: NSObject, ArrayDataSourceRepresentable
     
     // MARK: - Private
     
-    private func presenter(for indexPath: IndexPath, kind: String) -> DataSourceObjectPresenter? {
-        guard sections.indices.contains(indexPath.section) else { return nil }
-        let sectionModel = sections[indexPath.section]
-        if kind == UICollectionElementKindSectionHeader {
-            return sectionModel.header
-        } else if kind == UICollectionElementKindSectionFooter {
-            return sectionModel.footer
-        }
-        return nil
-    }
+//    private func presenter(for indexPath: IndexPath, kind: String) -> DataSourceObjectPresenter? {
+//        guard sections.indices.contains(indexPath.section) else { return nil }
+//        let sectionModel = sections[indexPath.section]
+//        if kind == UICollectionElementKindSectionHeader {
+//            return sectionModel.header
+//        } else if kind == UICollectionElementKindSectionFooter {
+//            return sectionModel.footer
+//        }
+//        return nil
+//    }
     
 }
 
@@ -116,8 +116,6 @@ extension CollectionViewArrayDataSource: UICollectionViewDataSource {
         guard let presenter = presenter(for: indexPath, kind: kind) else { return UICollectionReusableView() }
         let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: presenter.reuseIdentifier, for: indexPath)
         guard let interface = view as? DataSourceObjectInterface else { return UICollectionReusableView() }
-        interface.set(presenter: presenter)
-        presenter.set(view: view)
         presenter.configure()
         return view
     }

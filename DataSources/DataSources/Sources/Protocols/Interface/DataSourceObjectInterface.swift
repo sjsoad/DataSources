@@ -11,6 +11,8 @@ import Foundation
 
 public protocol DataSourceObjectInterface {
     
-    func set(presenter: DataSourceObjectPresenter)
+    associatedtype PresenterType
+    
+    var presenter: PresenterType? { get set }
     
 }

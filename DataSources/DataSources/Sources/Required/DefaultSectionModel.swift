@@ -8,16 +8,13 @@
 
 import UIKit
 
-open class SectionModel: NSObject, DataSourceSectionRepresentable, DataSourceSectionAppendable, DataSourceSectionRemovable,
-DataSourceSectionInsertable, DataSourceSectionReordering {
+open class DefaultSectionModel: SectionRepresentable {
     
     public private(set) var items: [DataSourceObjectPresenter]
     public private(set) var header: SectionHeaderPresenter?
     public private(set) var footer: SectionFooterPresenter?
     
-    public init(withItems items: [DataSourceObjectPresenter],
-                header: SectionHeaderPresenter? = nil,
-                footer: SectionFooterPresenter? = nil) {
+    public init(withItems items: [DataSourceObjectPresenter], header: SectionHeaderPresenter? = nil, footer: SectionFooterPresenter? = nil) {
         self.items = items
         self.header = header
         self.footer = footer
@@ -26,7 +23,7 @@ DataSourceSectionInsertable, DataSourceSectionReordering {
     // MARK: - DataSourceSectionAppendable -
     
     public func append(newItems: [DataSourceObjectPresenter], handler: DataSourceSectionChangeHandler?) {
-        let lastIndex = items.count - 1
+        guard let lastIndex = items.indices.last else { return }
         items.append(contentsOf: newItems)
         let diff = Array(lastIndex + 1...lastIndex + newItems.count)
         handler?(diff)
