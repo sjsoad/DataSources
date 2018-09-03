@@ -20,12 +20,12 @@
 		A5423F7D213D94F10060322E /* InterfaceRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5423F7C213D94F10060322E /* InterfaceRepresentable.swift */; };
 		A5423F80213D95480060322E /* SectionRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5423F7F213D95480060322E /* SectionRepresentable.swift */; };
 		A5423F88213D95810060322E /* SectionHeaderRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5423F81213D95800060322E /* SectionHeaderRepresentable.swift */; };
-		A5423F89213D95810060322E /* DataSourceSectionRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5423F82213D95800060322E /* DataSourceSectionRepresentable.swift */; };
 		A5423F8A213D95810060322E /* SectionFooterRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5423F83213D95800060322E /* SectionFooterRepresentable.swift */; };
-		A5423F8B213D95810060322E /* DataSourceSectionReordering.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5423F84213D95800060322E /* DataSourceSectionReordering.swift */; };
-		A5423F8C213D95810060322E /* DataSourceSectionInsertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5423F85213D95800060322E /* DataSourceSectionInsertable.swift */; };
-		A5423F8D213D95810060322E /* DataSourceSectionRemovable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5423F86213D95810060322E /* DataSourceSectionRemovable.swift */; };
-		A5423F8E213D95810060322E /* DataSourceSectionAppendable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5423F87213D95810060322E /* DataSourceSectionAppendable.swift */; };
+		A5423F8B213D95810060322E /* SectionReordering.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5423F84213D95800060322E /* SectionReordering.swift */; };
+		A5423F8C213D95810060322E /* SectionInsertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5423F85213D95800060322E /* SectionInsertable.swift */; };
+		A5423F8D213D95810060322E /* SectionRemovable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5423F86213D95810060322E /* SectionRemovable.swift */; };
+		A5423F8E213D95810060322E /* SectionAppendable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5423F87213D95810060322E /* SectionAppendable.swift */; };
+		A5423F90213D985D0060322E /* DefaultSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5423F8F213D985D0060322E /* DefaultSection.swift */; };
 		A5D6A8362090FB4A00DF7495 /* ReadMe.rtf in Resources */ = {isa = PBXBuildFile; fileRef = A5D6A8352090FB4A00DF7495 /* ReadMe.rtf */; };
 		A5F8CFCC2090BC92002E5F9E /* DataSources.h in Headers */ = {isa = PBXBuildFile; fileRef = A5F8CFCA2090BC91002E5F9E /* DataSources.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
@@ -44,12 +44,12 @@
 		A5423F7C213D94F10060322E /* InterfaceRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceRepresentable.swift; sourceTree = "<group>"; };
 		A5423F7F213D95480060322E /* SectionRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionRepresentable.swift; sourceTree = "<group>"; };
 		A5423F81213D95800060322E /* SectionHeaderRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionHeaderRepresentable.swift; sourceTree = "<group>"; };
-		A5423F82213D95800060322E /* DataSourceSectionRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSourceSectionRepresentable.swift; sourceTree = "<group>"; };
 		A5423F83213D95800060322E /* SectionFooterRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionFooterRepresentable.swift; sourceTree = "<group>"; };
-		A5423F84213D95800060322E /* DataSourceSectionReordering.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSourceSectionReordering.swift; sourceTree = "<group>"; };
-		A5423F85213D95800060322E /* DataSourceSectionInsertable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSourceSectionInsertable.swift; sourceTree = "<group>"; };
-		A5423F86213D95810060322E /* DataSourceSectionRemovable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSourceSectionRemovable.swift; sourceTree = "<group>"; };
-		A5423F87213D95810060322E /* DataSourceSectionAppendable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSourceSectionAppendable.swift; sourceTree = "<group>"; };
+		A5423F84213D95800060322E /* SectionReordering.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionReordering.swift; sourceTree = "<group>"; };
+		A5423F85213D95800060322E /* SectionInsertable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionInsertable.swift; sourceTree = "<group>"; };
+		A5423F86213D95810060322E /* SectionRemovable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionRemovable.swift; sourceTree = "<group>"; };
+		A5423F87213D95810060322E /* SectionAppendable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionAppendable.swift; sourceTree = "<group>"; };
+		A5423F8F213D985D0060322E /* DefaultSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSection.swift; sourceTree = "<group>"; };
 		A5D6A8352090FB4A00DF7495 /* ReadMe.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = ReadMe.rtf; sourceTree = "<group>"; };
 		A5F8CFC72090BC91002E5F9E /* DataSources.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DataSources.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5F8CFCA2090BC91002E5F9E /* DataSources.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataSources.h; sourceTree = "<group>"; };
@@ -117,6 +117,7 @@
 			children = (
 				A5423F77213D94610060322E /* Protocols */,
 				A5423F31213D93EB0060322E /* Constants.swift */,
+				A5423F8F213D985D0060322E /* DefaultSection.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -153,11 +154,10 @@
 		A5423F7E213D951A0060322E /* Section */ = {
 			isa = PBXGroup;
 			children = (
-				A5423F87213D95810060322E /* DataSourceSectionAppendable.swift */,
-				A5423F85213D95800060322E /* DataSourceSectionInsertable.swift */,
-				A5423F86213D95810060322E /* DataSourceSectionRemovable.swift */,
-				A5423F84213D95800060322E /* DataSourceSectionReordering.swift */,
-				A5423F82213D95800060322E /* DataSourceSectionRepresentable.swift */,
+				A5423F87213D95810060322E /* SectionAppendable.swift */,
+				A5423F85213D95800060322E /* SectionInsertable.swift */,
+				A5423F86213D95810060322E /* SectionRemovable.swift */,
+				A5423F84213D95800060322E /* SectionReordering.swift */,
 				A5423F83213D95800060322E /* SectionFooterRepresentable.swift */,
 				A5423F81213D95800060322E /* SectionHeaderRepresentable.swift */,
 				A5423F7F213D95480060322E /* SectionRepresentable.swift */,
@@ -279,25 +279,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5423F8E213D95810060322E /* DataSourceSectionAppendable.swift in Sources */,
+				A5423F8E213D95810060322E /* SectionAppendable.swift in Sources */,
 				A5423F70213D93EB0060322E /* TableViewRowMoving.swift in Sources */,
 				A5423F7B213D94B70060322E /* PresenterRepresentable.swift in Sources */,
+				A5423F90213D985D0060322E /* DefaultSection.swift in Sources */,
 				A5423F75213D93EB0060322E /* Nibable.swift in Sources */,
 				A5423F88213D95810060322E /* SectionHeaderRepresentable.swift in Sources */,
 				A5423F74213D93EB0060322E /* Reusable.swift in Sources */,
 				A5423F72213D93EB0060322E /* DataSourceRepresentable.swift in Sources */,
 				A5423F73213D93EB0060322E /* Configurable.swift in Sources */,
-				A5423F8B213D95810060322E /* DataSourceSectionReordering.swift in Sources */,
+				A5423F8B213D95810060322E /* SectionReordering.swift in Sources */,
 				A5423F6E213D93EB0060322E /* CollectionViewRowMoving.swift in Sources */,
 				A5423F7D213D94F10060322E /* InterfaceRepresentable.swift in Sources */,
 				A5423F5B213D93EB0060322E /* Constants.swift in Sources */,
-				A5423F8C213D95810060322E /* DataSourceSectionInsertable.swift in Sources */,
+				A5423F8C213D95810060322E /* SectionInsertable.swift in Sources */,
 				A5423F71213D93EB0060322E /* RowMoving.swift in Sources */,
 				A5423F80213D95480060322E /* SectionRepresentable.swift in Sources */,
-				A5423F8D213D95810060322E /* DataSourceSectionRemovable.swift in Sources */,
+				A5423F8D213D95810060322E /* SectionRemovable.swift in Sources */,
 				A5423F6F213D93EB0060322E /* TableViewRowEditing.swift in Sources */,
 				A5423F8A213D95810060322E /* SectionFooterRepresentable.swift in Sources */,
-				A5423F89213D95810060322E /* DataSourceSectionRepresentable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

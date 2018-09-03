@@ -7,12 +7,10 @@
 
 import Foundation
 
-public protocol SectionRepresentable: DataSourceSectionAppendable, DataSourceSectionRemovable,
-DataSourceSectionInsertable, DataSourceSectionReordering {
+public protocol SectionRepresentable: SectionAppendable, SectionRemovable, SectionInsertable, SectionReordering {
     
     var items: [PresenterRepresentable] { get }
     var header: SectionHeaderRepresentable? { get }
     var footer: SectionFooterRepresentable? { get }
 
-    
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol DataSourceSectionInsertable {
+public protocol SectionInsertable {
     
 //    func insert<ItemType: DataSourceObjectPresenter>(newItems: [ItemType], at index: Int, handler: DataSourceSectionChangeHandler?)
 //    func insert<ItemType: DataSourceObjectPresenter>(item: ItemType, at index: Int, handler: DataSourceSectionChangeHandler?)
