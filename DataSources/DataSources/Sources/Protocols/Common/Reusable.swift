@@ -9,13 +9,13 @@
 import UIKit
 import Foundation
 
-public protocol Reusable {
+public protocol Reusable where Self: UIView {
 
     static var reuseIdentifier: String { get }
     
 }
 
-public extension Reusable where Self: UIView {
+public extension Reusable {
     
     static var reuseIdentifier: String {
         return String(describing: self)
