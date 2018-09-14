@@ -30,13 +30,11 @@ open class TableViewArrayDataSource: ArrayDataSource, TableViewArrayDataSourceRe
     // Row display
     
     public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let section = sections[section]
-        return section.headerTitle()
+        return sections[section].headerTitle()
     }
     
     public func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        let section = sections[section]
-        return section.footerTitle()
+        return sections[section].footerTitle()
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -68,4 +66,11 @@ open class TableViewArrayDataSource: ArrayDataSource, TableViewArrayDataSourceRe
         editingProvider?.edititngHandler?(editingStyle, indexPath)
     }
 
+    // MARK: - Private -
+    
+    private func section(at index: Int) -> SectionRepresentable? {
+        guard sections.indices.contains(index) else { return nil }
+        return sections[index]
+    }
+    
 }
