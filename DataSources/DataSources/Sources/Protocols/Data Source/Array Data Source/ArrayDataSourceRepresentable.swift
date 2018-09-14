@@ -11,11 +11,11 @@ import Foundation
 
 public protocol ArrayDataSourceRepresentable {
     
-    func append(items: [CellPresenterRepresentable], toSectionAtIndex index: Int, handler: SectionsChangeHandler?)
-    func append(item: CellPresenterRepresentable, toSectionAtIndex index: Int, handler: SectionsChangeHandler?)
+    func append(with items: [CellPresenterRepresentable], toSectionAtIndex index: Int, handler: SectionsChangeHandler?)
+    func append(with item: CellPresenterRepresentable, toSectionAtIndex index: Int, handler: SectionsChangeHandler?)
     
-    func append(newSections: [SectionRepresentable], handler: DataSourceChangeHandler?)
-    func append(newSection: SectionRepresentable, handler: DataSourceChangeHandler?)
+    func append(with newSections: [SectionRepresentable], handler: DataSourceChangeHandler?)
+    func append(with newSection: SectionRepresentable, handler: DataSourceChangeHandler?)
     
     func remove(itemsAt indexPathes: [IndexPath])
     func remove(itemAt indexPath: IndexPath)
@@ -23,11 +23,11 @@ public protocol ArrayDataSourceRepresentable {
     func remove(sectionsAt indices: [Int])
     func remove(sectionAt index: Int)
     
-    func insert(items: [CellPresenterRepresentable], at indexPath: IndexPath, handler: SectionsChangeHandler?)
-    func insert(item: CellPresenterRepresentable, at indexPath: IndexPath, handler: SectionsChangeHandler?)
+    func insert(with items: [CellPresenterRepresentable], at indexPath: IndexPath, handler: SectionsChangeHandler?)
+    func insert(with item: CellPresenterRepresentable, at indexPath: IndexPath, handler: SectionsChangeHandler?)
     
-    func insert(newSections: [SectionRepresentable], at index: Int, handler: DataSourceChangeHandler?)
-    func insert(newSection: SectionRepresentable, at index: Int, handler: DataSourceChangeHandler?)
+    func insert(with newSections: [SectionRepresentable], at index: Int, handler: DataSourceChangeHandler?)
+    func insert(with newSection: SectionRepresentable, at index: Int, handler: DataSourceChangeHandler?)
     
     /*
     For propper reordering implement:
