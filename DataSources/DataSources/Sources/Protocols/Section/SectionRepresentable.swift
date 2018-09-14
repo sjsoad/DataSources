@@ -21,7 +21,7 @@ public protocol SectionRepresentable {
     func append(newItems: [CellPresenterRepresentable], handler: SectionChangeHandler?)
     func append(item: CellPresenterRepresentable, handler: SectionChangeHandler?)
     
-    func remove(itemsAt indexes: [Int])
+    func remove(itemsAt indices: [Int])
     func remove(itemAt index: Int)
     
     func insert(newItems: [CellPresenterRepresentable], at index: Int, handler: SectionChangeHandler?)

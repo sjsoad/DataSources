@@ -13,8 +13,8 @@ open class ArrayDataSource: DefaultDataSource, ArrayDataSourceRepresentable {
     public func append(items: [CellPresenterRepresentable], toSectionAtIndex sectionIndex: Int, handler: SectionsChangeHandler?) {
         guard sections.indices.contains(sectionIndex), !items.isEmpty else { return }
         let section = sections[sectionIndex]
-        section.append(newItems: items) { (indexes) in
-            let indexPathes = IndexPath.generateIndexPathes(from: indexes, sectionIndex: sectionIndex)
+        section.append(newItems: items) { (indices) in
+            let indexPathes = indices.compactMap({ IndexPath(row: $0, section: sectionIndex) })
             handler?(indexPathes)
         }
     }
@@ -22,8 +22,8 @@ open class ArrayDataSource: DefaultDataSource, ArrayDataSourceRepresentable {
     public func append(item: CellPresenterRepresentable, toSectionAtIndex sectionIndex: Int, handler: SectionsChangeHandler?) {
         guard sections.indices.contains(sectionIndex) else { return }
         let section = sections[sectionIndex]
-        section.append(item: item) { (indexes) in
-            let indexPathes = IndexPath.generateIndexPathes(from: indexes, sectionIndex: sectionIndex)
+        section.append(item: item) { (indices) in
+            let indexPathes = indices.compactMap({ IndexPath(row: $0, section: sectionIndex) })
             handler?(indexPathes)
         }
     }
@@ -54,8 +54,8 @@ open class ArrayDataSource: DefaultDataSource, ArrayDataSourceRepresentable {
         section.remove(itemAt: indexPath.row)
     }
     
-    public func remove(sectionsAt indexes: [Int]) {
-        indexes.forEach { [weak self] (index) in
+    public func remove(sectionsAt indices: [Int]) {
+        indices.forEach { [weak self] (index) in
             self?.remove(sectionAt: index)
         }
     }
@@ -68,8 +68,8 @@ open class ArrayDataSource: DefaultDataSource, ArrayDataSourceRepresentable {
     public func insert(items: [CellPresenterRepresentable], at indexPath: IndexPath, handler: SectionsChangeHandler?) {
         guard sections.indices.contains(indexPath.section), !items.isEmpty else { return }
         let section = sections[indexPath.section]
-        section.insert(newItems: items, at: indexPath.row) { (indexes) in
-            let indexPathes = IndexPath.generateIndexPathes(from: indexes, sectionIndex: indexPath.section)
+        section.insert(newItems: items, at: indexPath.row) { (indices) in
+            let indexPathes = indices.compactMap({ IndexPath(row: $0, section: indexPath.section) })
             handler?(indexPathes)
         }
     }
@@ -77,8 +77,8 @@ open class ArrayDataSource: DefaultDataSource, ArrayDataSourceRepresentable {
     public func insert(item: CellPresenterRepresentable, at indexPath: IndexPath, handler: SectionsChangeHandler?) {
         guard sections.indices.contains(indexPath.section) else { return }
         let section = sections[indexPath.section]
-        section.insert(item: item, at:  indexPath.row) { (indexes) in
-            let indexPathes = IndexPath.generateIndexPathes(from: indexes, sectionIndex: indexPath.section)
+        section.insert(item: item, at:  indexPath.row) { (indices) in
+            let indexPathes = indices.compactMap({ IndexPath(row: $0, section: indexPath.section) })
             handler?(indexPathes)
         }
     }

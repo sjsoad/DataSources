@@ -20,7 +20,7 @@ public protocol ArrayDataSourceRepresentable {
     func remove(itemsAt indexPathes: [IndexPath])
     func remove(itemAt indexPath: IndexPath)
     
-    func remove(sectionsAt indexes: [Int])
+    func remove(sectionsAt indices: [Int])
     func remove(sectionAt index: Int)
     
     func insert(items: [CellPresenterRepresentable], at indexPath: IndexPath, handler: SectionsChangeHandler?)

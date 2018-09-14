@@ -54,8 +54,8 @@ open class DefaultSection: NSObject, SectionRepresentable {
     
     // MARK: - Remove -
     
-    public func remove(itemsAt indexes: [Int]) {
-        indexes.forEach { [weak self] (index) in
+    public func remove(itemsAt indices: [Int]) {
+        indices.forEach { [weak self] (index) in
             self?.remove(itemAt: index)
         }
     }
