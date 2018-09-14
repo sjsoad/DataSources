@@ -65,12 +65,5 @@ open class TableViewArrayDataSource: ArrayDataSource, TableViewArrayDataSourceRe
     public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         editingProvider?.edititngHandler?(editingStyle, indexPath)
     }
-
-    // MARK: - Private -
-    
-    private func section(at index: Int) -> SectionRepresentable? {
-        guard sections.indices.contains(index) else { return nil }
-        return sections[index]
-    }
     
 }
