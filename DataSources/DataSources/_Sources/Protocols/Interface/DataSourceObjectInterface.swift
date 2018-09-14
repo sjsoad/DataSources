@@ -11,6 +11,6 @@ import Foundation
 
 public protocol DataSourceObjectInterface {
     
-    func set(presenter: DataSourceObjectPresenter)
+    func set(presenter: CellPresenterRepresentable)
     
 }

@@ -1,5 +1,5 @@
 //
-//  SectionHeaderPresenter.swift
+//  SectionHeaderRepresentable.swift
 //  New Data Source
 //
 //  Created by Sergey on 18.10.17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-public protocol SectionHeaderPresenter: DataSourceObjectPresenter {
+public protocol SectionHeaderRepresentable: CellPresenterRepresentable {
 
     var headerTitle: String? { get set }
 

@@ -1,5 +1,5 @@
 //
-//  SectionFooterPresenter.swift
+//  SectionFooterRepresentable.swift
 //  New Data Source
 //
 //  Created by Sergey on 18.10.17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-public protocol SectionFooterPresenter: DataSourceObjectPresenter {
+public protocol SectionFooterRepresentable: CellPresenterRepresentable {
 
     var footerTitle: String? { get }
     
