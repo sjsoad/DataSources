@@ -15,25 +15,22 @@ class SectionTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        section = DefaultSection(with: [], header: nil, footer: nil)
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        section = DefaultSection(with: [TestPresenter()], header: TestHeader(), footer: TestFooter())
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        section = nil
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testSetup() {
+        XCTAssertEqual(1, section?.itemsCount(), "Invalid count")
+        XCTAssertEqual("TestHeader", section?.headerTitle(), "Invalid header title")
+        XCTAssertEqual("TestFooter", section?.footerTitle(), "Invalid footer title")
+        XCTAssertNotNil(section?.header)
+        XCTAssertNotNil(section?.footer)
+        XCTAssertNotNil(section?.item(at: 0))
+        XCTAssertNil(section?.item(at: 1))
     }
     
 }
