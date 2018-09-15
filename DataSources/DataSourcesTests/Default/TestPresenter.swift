@@ -9,7 +9,7 @@
 import UIKit
 @testable import DataSources
 
-class TestPresenter: CellPresenterRepresentable {
+class TestPresenter: PresenterType {
 
     private(set) var reuseIdentifier: String
     

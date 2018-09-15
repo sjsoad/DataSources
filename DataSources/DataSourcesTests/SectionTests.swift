@@ -15,7 +15,7 @@ class SectionTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        section = DefaultSection(with: <#T##[CellPresenterRepresentable]#>, header: <#T##SectionHeaderRepresentable?#>, footer: <#T##SectionFooterRepresentable?#>)
+        section = DefaultSection(with: [], header: nil, footer: nil)
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     
