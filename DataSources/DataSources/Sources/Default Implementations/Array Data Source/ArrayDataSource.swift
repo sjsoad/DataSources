@@ -21,13 +21,13 @@ open class ArrayDataSource: DefaultDataSource, ArrayDataSourceRepresentable {
     
     // MARK: - Public -
     
-    public func append(with items: [CellPresenterRepresentable], toSectionAtIndex sectionIndex: Int, handler: SectionsChangeHandler?) {
+    public func append(with items: [PresenterType], toSectionAtIndex sectionIndex: Int, handler: SectionsChangeHandler?) {
         guard sections.indices.contains(sectionIndex), !items.isEmpty else { return }
         let section = sections[sectionIndex]
         section.append(with: items, handler: sectionChangeHandler(for: sectionIndex, with: handler))
     }
     
-    public func append(with item: CellPresenterRepresentable, toSectionAtIndex sectionIndex: Int, handler: SectionsChangeHandler?) {
+    public func append(with item: PresenterType, toSectionAtIndex sectionIndex: Int, handler: SectionsChangeHandler?) {
         guard sections.indices.contains(sectionIndex) else { return }
         let section = sections[sectionIndex]
         section.append(with: item, handler: sectionChangeHandler(for: sectionIndex, with: handler))
@@ -70,13 +70,13 @@ open class ArrayDataSource: DefaultDataSource, ArrayDataSourceRepresentable {
         sections.remove(at: index)
     }
     
-    public func insert(with items: [CellPresenterRepresentable], at indexPath: IndexPath, handler: SectionsChangeHandler?) {
+    public func insert(with items: [PresenterType], at indexPath: IndexPath, handler: SectionsChangeHandler?) {
         guard sections.indices.contains(indexPath.section), !items.isEmpty else { return }
         let section = sections[indexPath.section]
         section.insert(with: items, at: indexPath.row, handler: sectionChangeHandler(for: indexPath.section, with: handler))
     }
     
-    public func insert(with item: CellPresenterRepresentable, at indexPath: IndexPath, handler: SectionsChangeHandler?) {
+    public func insert(with item: PresenterType, at indexPath: IndexPath, handler: SectionsChangeHandler?) {
         guard sections.indices.contains(indexPath.section) else { return }
         let section = sections[indexPath.section]
         section.insert(with: item, at: indexPath.row, handler: sectionChangeHandler(for: indexPath.section, with: handler))
@@ -94,7 +94,7 @@ open class ArrayDataSource: DefaultDataSource, ArrayDataSourceRepresentable {
         handler?([index])
     }
     
-    public func replace(itemAt indexPath: IndexPath, with item: CellPresenterRepresentable) {
+    public func replace(itemAt indexPath: IndexPath, with item: PresenterType) {
         guard sections.indices.contains(indexPath.section) else { return }
         let section = sections[indexPath.section]
         section.replace(itemAt: indexPath.row, with: item)
@@ -108,7 +108,7 @@ open class ArrayDataSource: DefaultDataSource, ArrayDataSourceRepresentable {
         } else {
             let destinationSection = sections[destinationIndexPath.section]
             let sourceSection = sections[sourceIndexPath.section]
-            guard let sourceItem: CellPresenterRepresentable = sourceSection.item(at: sourceIndexPath.row) else { return }
+            guard let sourceItem: PresenterType = sourceSection.item(at: sourceIndexPath.row) else { return }
             if destinationSection.itemsCount() > destinationIndexPath.row {
                 destinationSection.insert(with: sourceItem, at: destinationIndexPath.row, handler: nil)
             } else {

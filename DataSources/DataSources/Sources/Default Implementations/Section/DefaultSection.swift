@@ -10,11 +10,11 @@ import UIKit
 
 open class DefaultSection: NSObject, SectionRepresentable {
 
-    private var items: [CellPresenterRepresentable]
+    private var items: [PresenterType]
     public private(set) var header: SectionHeaderRepresentable?
     public private(set) var footer: SectionFooterRepresentable?
     
-    init(with items: [CellPresenterRepresentable] = [], header: SectionHeaderRepresentable? = nil, footer: SectionFooterRepresentable? = nil) {
+    init(with items: [PresenterType] = [], header: SectionHeaderRepresentable? = nil, footer: SectionFooterRepresentable? = nil) {
         self.items = items
         self.header = header
         self.footer = footer
@@ -39,13 +39,13 @@ open class DefaultSection: NSObject, SectionRepresentable {
     
     // MARK: - Append -
     
-    public func append(with newItems: [CellPresenterRepresentable], handler: SectionChangeHandler?) {
+    public func append(with newItems: [PresenterType], handler: SectionChangeHandler?) {
         items.append(contentsOf: newItems)
 //        let diff = Array(lastIndex + 1...lastIndex + newItems.count)
 //        handler?(diff)
     }
     
-    public func append(with item: CellPresenterRepresentable, handler: SectionChangeHandler?) {
+    public func append(with item: PresenterType, handler: SectionChangeHandler?) {
         items.append(item)
         handler?([items.endIndex])
     }
@@ -65,14 +65,14 @@ open class DefaultSection: NSObject, SectionRepresentable {
     
     // MARK: - Insert -
     
-    public func insert(with newItems: [CellPresenterRepresentable], at index: Int, handler: SectionChangeHandler?) {
+    public func insert(with newItems: [PresenterType], at index: Int, handler: SectionChangeHandler?) {
         guard items.indices.contains(index) || index == 0 else { return }
         items.insert(contentsOf: newItems, at: index)
         let diff = Array(index...index + newItems.endIndex)
         handler?(diff)
     }
     
-    public func insert(with item: CellPresenterRepresentable, at index: Int, handler: SectionChangeHandler?) {
+    public func insert(with item: PresenterType, at index: Int, handler: SectionChangeHandler?) {
         guard items.indices.contains(index) || index == 0 else { return }
         items.insert(item, at: index)
         handler?([index])
@@ -80,7 +80,7 @@ open class DefaultSection: NSObject, SectionRepresentable {
     
     // MARK: - Replace -
     
-    public func replace(itemAt index: Int, with item: CellPresenterRepresentable) {
+    public func replace(itemAt index: Int, with item: PresenterType) {
         guard items.indices.contains(index) else { return }
         items[index] = item
     }

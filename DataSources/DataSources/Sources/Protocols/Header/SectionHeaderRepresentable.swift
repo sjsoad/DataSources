@@ -8,7 +8,7 @@
 
 import UIKit
 
-public protocol SectionHeaderRepresentable: CellPresenterRepresentable {
+public protocol SectionHeaderRepresentable: PresenterType {
 
     var headerTitle: String? { get set }
 

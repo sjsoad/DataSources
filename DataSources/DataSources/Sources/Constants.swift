@@ -11,3 +11,6 @@ import Foundation
 public typealias SectionChangeHandler = (([Int]) -> Void)
 public typealias SectionsChangeHandler = (([IndexPath]) -> Void)
 public typealias DataSourceChangeHandler = ((IndexSet) -> Void)
+
+public typealias PresenterType = PresenterRepresentable
+public typealias ViewType = InterfaceRepresentable

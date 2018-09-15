@@ -18,16 +18,16 @@ public protocol SectionRepresentable {
     func headerTitle() -> String?
     func footerTitle() -> String?
     
-    func append(with newItems: [CellPresenterRepresentable], handler: SectionChangeHandler?)
-    func append(with item: CellPresenterRepresentable, handler: SectionChangeHandler?)
+    func append(with newItems: [PresenterType], handler: SectionChangeHandler?)
+    func append(with item: PresenterType, handler: SectionChangeHandler?)
     
     func remove(itemsAt indices: [Int])
     func remove(itemAt index: Int)
     
-    func insert(with newItems: [CellPresenterRepresentable], at index: Int, handler: SectionChangeHandler?)
-    func insert(with item: CellPresenterRepresentable, at index: Int, handler: SectionChangeHandler?)
+    func insert(with newItems: [PresenterType], at index: Int, handler: SectionChangeHandler?)
+    func insert(with item: PresenterType, at index: Int, handler: SectionChangeHandler?)
     
-    func replace(itemAt index: Int, with item: CellPresenterRepresentable)
+    func replace(itemAt index: Int, with item: PresenterType)
     
     func reorderItems(at sourceIndex: Int, and destinationIndex: Int)
     

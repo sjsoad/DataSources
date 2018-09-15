@@ -11,8 +11,8 @@ import Foundation
 
 public protocol ArrayDataSourceRepresentable {
     
-    func append(with items: [CellPresenterRepresentable], toSectionAtIndex index: Int, handler: SectionsChangeHandler?)
-    func append(with item: CellPresenterRepresentable, toSectionAtIndex index: Int, handler: SectionsChangeHandler?)
+    func append(with items: [PresenterType], toSectionAtIndex index: Int, handler: SectionsChangeHandler?)
+    func append(with item: PresenterType, toSectionAtIndex index: Int, handler: SectionsChangeHandler?)
     
     func append(with newSections: [SectionRepresentable], handler: DataSourceChangeHandler?)
     func append(with newSection: SectionRepresentable, handler: DataSourceChangeHandler?)
@@ -23,8 +23,8 @@ public protocol ArrayDataSourceRepresentable {
     func remove(sectionsAt indices: [Int])
     func remove(sectionAt index: Int)
     
-    func insert(with items: [CellPresenterRepresentable], at indexPath: IndexPath, handler: SectionsChangeHandler?)
-    func insert(with item: CellPresenterRepresentable, at indexPath: IndexPath, handler: SectionsChangeHandler?)
+    func insert(with items: [PresenterType], at indexPath: IndexPath, handler: SectionsChangeHandler?)
+    func insert(with item: PresenterType, at indexPath: IndexPath, handler: SectionsChangeHandler?)
     
     func insert(with newSections: [SectionRepresentable], at index: Int, handler: DataSourceChangeHandler?)
     func insert(with newSection: SectionRepresentable, at index: Int, handler: DataSourceChangeHandler?)
@@ -34,7 +34,7 @@ public protocol ArrayDataSourceRepresentable {
     func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath
     */
     
-    func replace(itemAt indexPath: IndexPath, with item: CellPresenterRepresentable)
+    func replace(itemAt indexPath: IndexPath, with item: PresenterType)
     func reorderItems(at sourceIndexPath: IndexPath, and destinationIndexPath: IndexPath)
     
     func replace(sectionAt index: Int, with section: SectionRepresentable)

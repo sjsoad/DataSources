@@ -1,5 +1,5 @@
 //
-//  CellPresenterRepresentable.swift
+//  PresenterRepresentable.swift
 //  DataSources
 //
 //  Created by Sergey Kostyan on 03.06.2018.
@@ -9,9 +9,9 @@
 import UIKit
 import Foundation
 
-public protocol CellPresenterRepresentable: Configurable {
+public protocol PresenterRepresentable: Configurable {
     
     var reuseIdentifier: String { get }
-    func set(view: UIView)
+    func set(view: ViewType)
     
 }

@@ -26,11 +26,11 @@ class CollectionViewArrayDataSource: ArrayDataSource, CollectionViewArrayDataSou
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let presenter: CellPresenterRepresentable = item(at: indexPath) {
+        if let presenter: PresenterType = item(at: indexPath) {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: presenter.reuseIdentifier, for: indexPath)
-            guard let interface = cell as? DataSourceObjectInterface else { return UICollectionViewCell() }
+            guard let interface = cell as? ViewType else { return UICollectionViewCell() }
             interface.set(presenter: presenter)
-            presenter.set(view: cell)
+            presenter.set(view: interface)
             presenter.configure()
             return cell
         }
@@ -41,9 +41,9 @@ class CollectionViewArrayDataSource: ArrayDataSource, CollectionViewArrayDataSou
                                at indexPath: IndexPath) -> UICollectionReusableView {
         guard let presenter = presenter(for: indexPath, kind: kind) else { return UICollectionReusableView() }
         let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: presenter.reuseIdentifier, for: indexPath)
-        guard let interface = view as? DataSourceObjectInterface else { return UICollectionReusableView() }
+        guard let interface = view as? ViewType else { return UICollectionReusableView() }
         interface.set(presenter: presenter)
-        presenter.set(view: view)
+        presenter.set(view: interface)
         presenter.configure()
         return view
     }
@@ -58,7 +58,7 @@ class CollectionViewArrayDataSource: ArrayDataSource, CollectionViewArrayDataSou
     
     // MARK: - Private
     
-    private func presenter(for indexPath: IndexPath, kind: String) -> CellPresenterRepresentable? {
+    private func presenter(for indexPath: IndexPath, kind: String) -> PresenterType? {
         guard sections.indices.contains(indexPath.section) else { return nil }
         let section = sections[indexPath.section]
         if kind == UICollectionElementKindSectionHeader {

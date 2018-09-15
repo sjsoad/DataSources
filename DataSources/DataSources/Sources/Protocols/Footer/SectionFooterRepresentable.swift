@@ -8,7 +8,7 @@
 
 import UIKit
 
-public protocol SectionFooterRepresentable: CellPresenterRepresentable {
+public protocol SectionFooterRepresentable: PresenterType {
 
     var footerTitle: String? { get }
     

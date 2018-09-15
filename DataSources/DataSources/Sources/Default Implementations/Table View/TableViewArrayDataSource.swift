@@ -38,10 +38,10 @@ open class TableViewArrayDataSource: ArrayDataSource, TableViewArrayDataSourceRe
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let presenter: CellPresenterRepresentable = item(at: indexPath),
-            let cell = tableView.dequeueReusableCell(withIdentifier: presenter.reuseIdentifier), let interface = cell as? DataSourceObjectInterface {
+        if let presenter: PresenterType = item(at: indexPath),
+            let cell = tableView.dequeueReusableCell(withIdentifier: presenter.reuseIdentifier), let interface = cell as? ViewType {
             interface.set(presenter: presenter)
-            presenter.set(view: cell)
+            presenter.set(view: interface)
             presenter.configure()
             return cell
         }
