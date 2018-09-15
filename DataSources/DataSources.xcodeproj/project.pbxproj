@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A51A40E9214CD562008AB43F /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51A40E8214CD562008AB43F /* Array.swift */; };
 		A59C85E220DE3E920049BEA0 /* SectionHeaderRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59C85C820DE3E920049BEA0 /* SectionHeaderRepresentable.swift */; };
 		A59C85E420DE3E920049BEA0 /* SectionFooterRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59C85CA20DE3E920049BEA0 /* SectionFooterRepresentable.swift */; };
 		A59C85E520DE3E920049BEA0 /* DataSourceObjectInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59C85CD20DE3E920049BEA0 /* DataSourceObjectInterface.swift */; };
@@ -45,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A51A40E8214CD562008AB43F /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		A59C85C820DE3E920049BEA0 /* SectionHeaderRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionHeaderRepresentable.swift; sourceTree = "<group>"; };
 		A59C85CA20DE3E920049BEA0 /* SectionFooterRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionFooterRepresentable.swift; sourceTree = "<group>"; };
 		A59C85CD20DE3E920049BEA0 /* DataSourceObjectInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSourceObjectInterface.swift; sourceTree = "<group>"; };
@@ -94,6 +96,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A51A40E7214CD55C008AB43F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A51A40E8214CD562008AB43F /* Array.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		A59C85CB20DE3E920049BEA0 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +174,7 @@
 		A5BCE4F6214BB77A00B05AE0 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				A51A40E7214CD55C008AB43F /* Extensions */,
 				A5BCE509214BE4BC00B05AE0 /* Default Implementations */,
 				A5BCE4F7214BB78800B05AE0 /* Protocols */,
 				A5BCE4FD214BB82400B05AE0 /* Constants.swift */,
@@ -479,6 +490,7 @@
 				A5E54920214BF0D9008D780E /* CollectionViewArrayDataSource.swift in Sources */,
 				A59C85E220DE3E920049BEA0 /* SectionHeaderRepresentable.swift in Sources */,
 				A59C85E720DE3E920049BEA0 /* CellPresenterRepresentable.swift in Sources */,
+				A51A40E9214CD562008AB43F /* Array.swift in Sources */,
 				A5E54915214BE8EB008D780E /* ArrayDataSource.swift in Sources */,
 				A5BCE503214BCACA00B05AE0 /* TableViewArrayDataSourceRepresentable.swift in Sources */,
 				A59C85EE20DE3E920049BEA0 /* Reusable.swift in Sources */,

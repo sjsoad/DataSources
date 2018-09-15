@@ -40,7 +40,6 @@ open class DefaultSection: NSObject, SectionRepresentable {
     // MARK: - Append -
     
     public func append(with newItems: [CellPresenterRepresentable], handler: SectionChangeHandler?) {
-        let lastIndex = items.count - 1
         items.append(contentsOf: newItems)
 //        let diff = Array(lastIndex + 1...lastIndex + newItems.count)
 //        handler?(diff)
@@ -70,15 +69,14 @@ open class DefaultSection: NSObject, SectionRepresentable {
     public func insert(with newItems: [CellPresenterRepresentable], at index: Int, handler: SectionChangeHandler?) {
         guard items.indices.contains(index) || index == 0 else { return }
         items.insert(contentsOf: newItems, at: index)
-//        let diff = Array(index...index + newItems.count - 1)
-//        handler?(diff)
+        let diff = Array(index...index + newItems.indices.last!)
+        handler?(diff)
     }
     
     public func insert(with item: CellPresenterRepresentable, at index: Int, handler: SectionChangeHandler?) {
         guard items.indices.contains(index) || index == 0 else { return }
         items.insert(item, at: index)
-//        let diff = [index]
-//        handler?(diff)
+        handler?([index])
     }
     
     // MARK: - Replace -
@@ -92,7 +90,7 @@ open class DefaultSection: NSObject, SectionRepresentable {
     
     public func reorderItems(at sourceIndex: Int, and destinationIndex: Int) {
         guard items.indices.contains(sourceIndex), items.indices.contains(destinationIndex) else { return }
-        items.swapAt(sourceIndex, destinationIndex)
+        items.rearrange(from: sourceIndex, to: destinationIndex)
     }
     
 }
