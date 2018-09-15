@@ -47,8 +47,7 @@ open class DefaultSection: NSObject, SectionRepresentable {
     
     public func append(with item: CellPresenterRepresentable, handler: SectionChangeHandler?) {
         items.append(item)
-//        let diff = [items.count - 1]
-//        handler?(diff)
+        handler?([items.endIndex])
     }
     
     // MARK: - Remove -
@@ -69,7 +68,7 @@ open class DefaultSection: NSObject, SectionRepresentable {
     public func insert(with newItems: [CellPresenterRepresentable], at index: Int, handler: SectionChangeHandler?) {
         guard items.indices.contains(index) || index == 0 else { return }
         items.insert(contentsOf: newItems, at: index)
-        let diff = Array(index...index + newItems.indices.last!)
+        let diff = Array(index...index + newItems.endIndex)
         handler?(diff)
     }
     

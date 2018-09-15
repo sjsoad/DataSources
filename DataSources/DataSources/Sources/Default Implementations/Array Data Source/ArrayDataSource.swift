@@ -43,7 +43,7 @@ open class ArrayDataSource: DefaultDataSource, ArrayDataSourceRepresentable {
     
     public func append(with newSection: SectionRepresentable, handler: DataSourceChangeHandler?) {
         self.sections.append(newSection)
-        let diff = IndexSet([self.sections.count - 1])
+        let diff = IndexSet([sections.endIndex])
         handler?(diff)
     }
     
@@ -85,7 +85,7 @@ open class ArrayDataSource: DefaultDataSource, ArrayDataSourceRepresentable {
     public func insert(with newSections: [SectionRepresentable], at index: Int, handler: DataSourceChangeHandler?) {
         guard !newSections.isEmpty, sections.indices.contains(index) || index == 0 else { return }
         sections.insert(contentsOf: newSections, at: index)
-        let diff = IndexSet(index...index + sections.count - 1)
+        let diff = IndexSet(index...index + sections.endIndex)
         handler?(diff)
     }
     
