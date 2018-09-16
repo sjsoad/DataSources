@@ -22,7 +22,7 @@ open class ArrayDataSource: DefaultDataSource, ArrayDataSourceRepresentable {
     // MARK: - Public -
     
     public func append(with items: [PresenterType], toSectionAtIndex sectionIndex: Int, handler: SectionsChangeHandler?) {
-        guard sections.indices.contains(sectionIndex), !items.isEmpty else { return }
+        guard sections.indices.contains(sectionIndex) || sectionIndex == 0 else { return }
         let section = sections[sectionIndex]
         section.append(with: items, handler: sectionChangeHandler(for: sectionIndex, with: handler))
     }
@@ -35,15 +35,14 @@ open class ArrayDataSource: DefaultDataSource, ArrayDataSourceRepresentable {
     
     public func append(with newSections: [SectionRepresentable], handler: DataSourceChangeHandler?) {
         guard !newSections.isEmpty else { return }
-        let lastIndex = sections.count - 1
-        self.sections.append(contentsOf: newSections)
-        let diff = IndexSet(lastIndex + 1...lastIndex + newSections.count)
+        let diff = newSections.indices.newRange(offsetBy: sections.count).asIndexSet()
+        sections.append(contentsOf: newSections)
         handler?(diff)
     }
     
     public func append(with newSection: SectionRepresentable, handler: DataSourceChangeHandler?) {
-        self.sections.append(newSection)
         let diff = IndexSet([sections.endIndex])
+        sections.append(newSection)
         handler?(diff)
     }
     
@@ -71,21 +70,21 @@ open class ArrayDataSource: DefaultDataSource, ArrayDataSourceRepresentable {
     }
     
     public func insert(with items: [PresenterType], at indexPath: IndexPath, handler: SectionsChangeHandler?) {
-        guard sections.indices.contains(indexPath.section), !items.isEmpty else { return }
+        guard sections.indices.contains(indexPath.section) else { return }
         let section = sections[indexPath.section]
         section.insert(with: items, at: indexPath.row, handler: sectionChangeHandler(for: indexPath.section, with: handler))
     }
     
-    public func insert(with item: PresenterType, at indexPath: IndexPath, handler: SectionsChangeHandler?) {
+    public func insert(with item: PresenterType, at indexPath: IndexPath) {
         guard sections.indices.contains(indexPath.section) else { return }
         let section = sections[indexPath.section]
-        section.insert(with: item, at: indexPath.row, handler: sectionChangeHandler(for: indexPath.section, with: handler))
+        section.insert(with: item, at: indexPath.row)
     }
     
     public func insert(with newSections: [SectionRepresentable], at index: Int, handler: DataSourceChangeHandler?) {
         guard !newSections.isEmpty, sections.indices.contains(index) || index == 0 else { return }
+        let diff = newSections.indices.newRange(offsetBy: index).asIndexSet()
         sections.insert(contentsOf: newSections, at: index)
-        let diff = IndexSet(index...index + sections.endIndex)
         handler?(diff)
     }
     
@@ -110,7 +109,7 @@ open class ArrayDataSource: DefaultDataSource, ArrayDataSourceRepresentable {
             let sourceSection = sections[sourceIndexPath.section]
             guard let sourceItem: PresenterType = sourceSection.item(at: sourceIndexPath.row) else { return }
             if destinationSection.itemsCount() > destinationIndexPath.row {
-                destinationSection.insert(with: sourceItem, at: destinationIndexPath.row, handler: nil)
+                destinationSection.insert(with: sourceItem, at: destinationIndexPath.row)
             } else {
                 destinationSection.append(with: sourceItem, handler: nil)
             }

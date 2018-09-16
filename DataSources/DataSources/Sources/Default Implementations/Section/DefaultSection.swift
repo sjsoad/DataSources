@@ -40,14 +40,16 @@ open class DefaultSection: NSObject, SectionRepresentable {
     // MARK: - Append -
     
     public func append(with newItems: [PresenterType], handler: SectionChangeHandler?) {
+        guard !newItems.isEmpty else { return }
+        let diff = newItems.indices.newRange(offsetBy: items.count).asArray()
         items.append(contentsOf: newItems)
-//        let diff = Array(lastIndex + 1...lastIndex + newItems.count)
-//        handler?(diff)
+        handler?(diff)
     }
     
     public func append(with item: PresenterType, handler: SectionChangeHandler?) {
+        let diff = [items.endIndex]
         items.append(item)
-        handler?([items.endIndex])
+        handler?(diff)
     }
     
     // MARK: - Remove -
@@ -66,16 +68,15 @@ open class DefaultSection: NSObject, SectionRepresentable {
     // MARK: - Insert -
     
     public func insert(with newItems: [PresenterType], at index: Int, handler: SectionChangeHandler?) {
-        guard items.indices.contains(index) || index == 0 else { return }
+        guard !newItems.isEmpty, items.indices.contains(index) || index == 0 else { return }
+        let diff = newItems.indices.newRange(offsetBy: index).asArray()
         items.insert(contentsOf: newItems, at: index)
-        let diff = Array(index...index + newItems.endIndex)
         handler?(diff)
     }
     
-    public func insert(with item: PresenterType, at index: Int, handler: SectionChangeHandler?) {
+    public func insert(with item: PresenterType, at index: Int) {
         guard items.indices.contains(index) || index == 0 else { return }
         items.insert(item, at: index)
-        handler?([index])
     }
     
     // MARK: - Replace -

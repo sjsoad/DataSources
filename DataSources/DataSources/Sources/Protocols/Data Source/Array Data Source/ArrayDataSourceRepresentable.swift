@@ -24,7 +24,7 @@ public protocol ArrayDataSourceRepresentable {
     func remove(sectionAt index: Int)
     
     func insert(with items: [PresenterType], at indexPath: IndexPath, handler: SectionsChangeHandler?)
-    func insert(with item: PresenterType, at indexPath: IndexPath, handler: SectionsChangeHandler?)
+    func insert(with item: PresenterType, at indexPath: IndexPath)
     
     func insert(with newSections: [SectionRepresentable], at index: Int, handler: DataSourceChangeHandler?)
     func insert(with newSection: SectionRepresentable, at index: Int, handler: DataSourceChangeHandler?)

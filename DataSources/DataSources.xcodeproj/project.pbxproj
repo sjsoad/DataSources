@@ -10,6 +10,7 @@
 		A51A40E9214CD562008AB43F /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51A40E8214CD562008AB43F /* Array.swift */; };
 		A5331592214D11E600A32182 /* TestHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5331591214D11E600A32182 /* TestHeader.swift */; };
 		A5331594214D122200A32182 /* TestFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5331593214D122200A32182 /* TestFooter.swift */; };
+		A5436A2E214E33640067834B /* Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5436A2D214E33640067834B /* Range.swift */; };
 		A59C85E220DE3E920049BEA0 /* SectionHeaderRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59C85C820DE3E920049BEA0 /* SectionHeaderRepresentable.swift */; };
 		A59C85E420DE3E920049BEA0 /* SectionFooterRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59C85CA20DE3E920049BEA0 /* SectionFooterRepresentable.swift */; };
 		A59C85E520DE3E920049BEA0 /* DataSourceObjectInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59C85CD20DE3E920049BEA0 /* DataSourceObjectInterface.swift */; };
@@ -51,6 +52,7 @@
 		A51A40E8214CD562008AB43F /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		A5331591214D11E600A32182 /* TestHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHeader.swift; sourceTree = "<group>"; };
 		A5331593214D122200A32182 /* TestFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFooter.swift; sourceTree = "<group>"; };
+		A5436A2D214E33640067834B /* Range.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Range.swift; sourceTree = "<group>"; };
 		A59C85C820DE3E920049BEA0 /* SectionHeaderRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionHeaderRepresentable.swift; sourceTree = "<group>"; };
 		A59C85CA20DE3E920049BEA0 /* SectionFooterRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionFooterRepresentable.swift; sourceTree = "<group>"; };
 		A59C85CD20DE3E920049BEA0 /* DataSourceObjectInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSourceObjectInterface.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				A51A40E8214CD562008AB43F /* Array.swift */,
+				A5436A2D214E33640067834B /* Range.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -474,6 +477,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5BCE4FE214BB82400B05AE0 /* Constants.swift in Sources */,
+				A5436A2E214E33640067834B /* Range.swift in Sources */,
 				A59C85E620DE3E920049BEA0 /* ArrayDataSourceRepresentable.swift in Sources */,
 				A59C85E920DE3E920049BEA0 /* TableViewRowEditing.swift in Sources */,
 				A59C85EC20DE3E920049BEA0 /* DataSourceRepresentable.swift in Sources */,

@@ -25,7 +25,7 @@ public protocol SectionRepresentable {
     func remove(itemAt index: Int)
     
     func insert(with newItems: [PresenterType], at index: Int, handler: SectionChangeHandler?)
-    func insert(with item: PresenterType, at index: Int, handler: SectionChangeHandler?)
+    func insert(with item: PresenterType, at index: Int)
     
     func replace(itemAt index: Int, with item: PresenterType)
     
