@@ -9,7 +9,7 @@
 import XCTest
 @testable import DataSources
 
-class SectionTests: XCTestCase {
+class SectionSetupTests: XCTestCase {
     
     private var section: SectionRepresentable?
     
@@ -41,15 +41,6 @@ class SectionTests: XCTestCase {
 //
 //        func reorderItems(at sourceIndex: Int, and destinationIndex: Int)
         
-    }
-    
-    func testAppend() {
-        section?.append(with: TestPresenter(), handler: { (indices) in
-            XCTAssertEqual([1], indices, "Invalid append item")
-        })
-        section?.append(with: [TestPresenter(), TestPresenter()], handler: { (indices) in
-            XCTAssertEqual([2,3], indices, "Invalid append items")
-        })
     }
     
 }
