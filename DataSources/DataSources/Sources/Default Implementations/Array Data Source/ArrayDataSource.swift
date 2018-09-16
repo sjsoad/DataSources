@@ -21,13 +21,13 @@ open class ArrayDataSource: DefaultDataSource, ArrayDataSourceRepresentable {
     
     // MARK: - Public -
     
-    public func append(with items: [PresenterType], toSectionAtIndex sectionIndex: Int, handler: SectionsChangeHandler?) {
+    public func append(with items: [PresenterType], toSectionAt sectionIndex: Int, handler: SectionsChangeHandler?) {
         guard sections.indices.contains(sectionIndex) || sectionIndex == 0 else { return }
         let section = sections[sectionIndex]
         section.append(with: items, handler: sectionChangeHandler(for: sectionIndex, with: handler))
     }
     
-    public func append(with item: PresenterType, toSectionAtIndex sectionIndex: Int, handler: SectionsChangeHandler?) {
+    public func append(with item: PresenterType, toSectionAt sectionIndex: Int, handler: SectionsChangeHandler?) {
         guard sections.indices.contains(sectionIndex) else { return }
         let section = sections[sectionIndex]
         section.append(with: item, handler: sectionChangeHandler(for: sectionIndex, with: handler))
@@ -89,7 +89,7 @@ open class ArrayDataSource: DefaultDataSource, ArrayDataSourceRepresentable {
     }
     
     public func insert(with newSection: SectionRepresentable, at index: Int, handler: DataSourceChangeHandler?) {
-        self.sections.insert(newSection, at: index)
+        sections.insert(newSection, at: index)
         handler?([index])
     }
     
@@ -102,29 +102,34 @@ open class ArrayDataSource: DefaultDataSource, ArrayDataSourceRepresentable {
     public func reorderItems(at sourceIndexPath: IndexPath, and destinationIndexPath: IndexPath) {
         guard sections.indices.contains(sourceIndexPath.section), sections.indices.contains(destinationIndexPath.section) else { return }
         if sourceIndexPath.section == destinationIndexPath.section {
-            let section = sections[sourceIndexPath.section]
-            section.reorderItems(at: sourceIndexPath.row, and: destinationIndexPath.row)
+            reorderItems(in: sourceIndexPath.section, at: sourceIndexPath.row, and: destinationIndexPath.row)
         } else {
-            let destinationSection = sections[destinationIndexPath.section]
-            let sourceSection = sections[sourceIndexPath.section]
-            guard let sourceItem: PresenterType = sourceSection.item(at: sourceIndexPath.row) else { return }
-            if destinationSection.itemsCount() > destinationIndexPath.row {
-                destinationSection.insert(with: sourceItem, at: destinationIndexPath.row)
+            guard let sourceItem: PresenterType = item(at: sourceIndexPath) else { return }
+            if numberOfItems(in: destinationIndexPath.section) > destinationIndexPath.row {
+                insert(with: sourceItem, at: destinationIndexPath)
             } else {
-                destinationSection.append(with: sourceItem, handler: nil)
+                append(with: sourceItem, toSectionAt: destinationIndexPath.section, handler: nil)
             }
-            sourceSection.remove(itemAt: sourceIndexPath.row)
+            remove(itemAt: sourceIndexPath)
         }
     }
     
     public func replace(sectionAt index: Int, with section: SectionRepresentable) {
         guard sections.indices.contains(index) else { return }
-        self.sections[index] = section
+        sections[index] = section
     }
     
     public func reorderSections(at sourceIndex: Int, and destinationIndex: Int) {
         guard sections.indices.contains(sourceIndex), sections.indices.contains(destinationIndex) else { return }
-        self.sections.rearrange(from: sourceIndex, to: destinationIndex)
+        sections.rearrange(from: sourceIndex, to: destinationIndex)
+    }
+    
+    // MARK: - Private -
+    
+    private func reorderItems(in sectionIndex: Int, at sourceIndex: Int, and destinationIndex: Int) {
+        guard sections.indices.contains(sectionIndex) else { return }
+        let section = sections[sectionIndex]
+        section.reorderItems(at: sourceIndex, and: destinationIndex)
     }
     
 }

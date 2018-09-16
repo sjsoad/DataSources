@@ -11,8 +11,8 @@ import Foundation
 
 public protocol ArrayDataSourceRepresentable {
     
-    func append(with items: [PresenterType], toSectionAtIndex index: Int, handler: SectionsChangeHandler?)
-    func append(with item: PresenterType, toSectionAtIndex index: Int, handler: SectionsChangeHandler?)
+    func append(with items: [PresenterType], toSectionAt index: Int, handler: SectionsChangeHandler?)
+    func append(with item: PresenterType, toSectionAt index: Int, handler: SectionsChangeHandler?)
     
     func append(with newSections: [SectionRepresentable], handler: DataSourceChangeHandler?)
     func append(with newSection: SectionRepresentable, handler: DataSourceChangeHandler?)

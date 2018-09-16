@@ -61,8 +61,8 @@ open class DefaultSection: NSObject, SectionRepresentable {
     }
     
     public func remove(itemAt index: Int) {
-        guard self.items.indices.contains(index) else { return }
-        self.items.remove(at: index)
+        guard items.indices.contains(index) else { return }
+        items.remove(at: index)
     }
     
     // MARK: - Insert -
