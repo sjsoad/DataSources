@@ -31,6 +31,25 @@ class SectionTests: XCTestCase {
         XCTAssertNotNil(section?.footer)
         XCTAssertNotNil(section?.item(at: 0))
         XCTAssertNil(section?.item(at: 1))
+//        func remove(itemsAt indices: [Int])
+//        func remove(itemAt index: Int)
+//
+//        func insert(with newItems: [PresenterType], at index: Int, handler: SectionChangeHandler?)
+//        func insert(with item: PresenterType, at index: Int)
+//
+//        func replace(itemAt index: Int, with item: PresenterType)
+//
+//        func reorderItems(at sourceIndex: Int, and destinationIndex: Int)
+        
+    }
+    
+    func testAppend() {
+        section?.append(with: TestPresenter(), handler: { (indices) in
+            XCTAssertEqual([1], indices, "Invalid append item")
+        })
+        section?.append(with: [TestPresenter(), TestPresenter()], handler: { (indices) in
+            XCTAssertEqual([2,3], indices, "Invalid append items")
+        })
     }
     
 }
