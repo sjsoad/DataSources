@@ -12,7 +12,7 @@ import Foundation
 public protocol DataSourceRepresentable {
 
     func numberOfSections() -> Int
-    func numberOfItemsInSection(sectionIndex: Int) -> Int
-    func itemAtIndexPath<PresenterType>(indexPath: IndexPath) -> PresenterType?
+    func numberOfItems(in section: Int) -> Int
+    func item<PresenterType>(at indexPath: IndexPath) -> PresenterType?
     
 }

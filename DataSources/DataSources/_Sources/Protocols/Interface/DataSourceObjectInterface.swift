@@ -1,5 +1,5 @@
 //
-//  DataSourceObjectInterface.swift
+//  InterfaceRepresentable.swift
 //  Pods
 //
 //  Created by Sergey on 05.06.2018.
@@ -9,10 +9,8 @@
 import UIKit
 import Foundation
 
-public protocol DataSourceObjectInterface {
+public protocol InterfaceRepresentable {
     
-    associatedtype PresenterType
-    
-    var presenter: PresenterType? { get set }
+    func set(presenter: PresenterType)
     
 }

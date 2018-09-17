@@ -1,13 +1,16 @@
 //
 //  Constants.swift
-//  SKDataSources
+//  DataSources
 //
-//  Created by Sergey on 03.09.2018.
+//  Created by Sergey on 14.09.2018.
+//  Copyright © 2018 Sergey. All rights reserved.
 //
 
 import Foundation
 
-public typealias DataSourceSectionsChangeHandler = (([IndexPath]) -> Void)
+public typealias SectionChangeHandler = (([Int]) -> Void)
+public typealias SectionsChangeHandler = (([IndexPath]) -> Void)
 public typealias DataSourceChangeHandler = ((IndexSet) -> Void)
 
-public typealias DataSourceSectionChangeHandler = (([Int]) -> Void)
+public typealias PresenterType = PresenterRepresentable
+public typealias ViewType = InterfaceRepresentable
