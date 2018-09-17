@@ -1,17 +1,16 @@
 //
 //  InterfaceRepresentable.swift
-//  DataSources
+//  Pods
 //
-//  Created by Sergey Kostyan on 03.09.2018.
-//  Copyright © 2018 Sergey. All rights reserved.
+//  Created by Sergey on 05.06.2018.
+//
 //
 
+import UIKit
 import Foundation
 
 public protocol InterfaceRepresentable {
     
-    associatedtype PresenterType
-    
-    var presenter: PresenterType? { get set }
+    func set(presenter: PresenterType)
     
 }

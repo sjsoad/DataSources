@@ -65,3 +65,6 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
+DataSources/DataSources/Sources/Protocols/Interface/InterfaceRepresentable.swift~HEAD
+DataSources/DataSources/Sources/Protocols/Interface/InterfaceRepresentable.swift~origin_refactoring
+DataSources/DataSources/Sources/Protocols/Presenter/PresenterRepresentable.swift~HEAD

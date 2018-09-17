@@ -8,20 +8,20 @@
 
 import Foundation
 
-extension Range where Element == Int {
+extension CountableRange where Bound == Int {
     
-    func newRange(offsetBy distance: Int) -> Range {
-        let newStartIndex = startIndex + distance
-        let newEndIndex = endIndex + distance
+    func newRange(offsetBy distance: Int) -> CountableRange {
+        let newStartIndex = lowerBound + distance
+        let newEndIndex = upperBound + distance
         return newStartIndex..<newEndIndex
     }
     
     func asArray() -> [Int] {
-        return Array(self)
+        return Array(lowerBound..<upperBound)
     }
     
     func asIndexSet() -> IndexSet {
-        return IndexSet(self)
+        return IndexSet(lowerBound..<upperBound)
     }
     
 }
