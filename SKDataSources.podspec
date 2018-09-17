@@ -9,7 +9,7 @@ s.summary = "DataSources allows you to create UITableView or UICollectionView da
 s.requires_arc = true
 
 # 2
-s.version = "0.0.6"
+s.version = "0.0.7"
 
 # 3
 s.license = { :type => "MIT", :file => "LICENSE" }
@@ -28,8 +28,8 @@ s.source = { :git => "https://github.com/sjsoad/DataSources.git", :tag => "#{s.v
 s.framework = "UIKit"
 
 # 8
-s.source_files = "DataSources/**/*.{swift}"
+s.source_files = "DataSources/DataSources/**/*.{swift}"
 # 9
-s.resources = "DataSources/**/*.{rtf}"
+s.resources = "DataSources/DataSources/**/*.{rtf}"
 
 end

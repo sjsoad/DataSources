@@ -14,7 +14,7 @@ open class DefaultSection: NSObject, SectionRepresentable {
     public private(set) var header: SectionHeaderRepresentable?
     public private(set) var footer: SectionFooterRepresentable?
     
-    init(with items: [PresenterType] = [], header: SectionHeaderRepresentable? = nil, footer: SectionFooterRepresentable? = nil) {
+    public init(with items: [PresenterType] = [], header: SectionHeaderRepresentable? = nil, footer: SectionFooterRepresentable? = nil) {
         self.items = items
         self.header = header
         self.footer = footer
