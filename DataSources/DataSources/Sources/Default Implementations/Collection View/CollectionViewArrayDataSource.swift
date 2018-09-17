@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CollectionViewArrayDataSource: ArrayDataSource, CollectionViewArrayDataSourceRepresentable {
+open class CollectionViewArrayDataSource: ArrayDataSource, CollectionViewArrayDataSourceRepresentable {
 
     private var movingProvider: RowMoving?
     
