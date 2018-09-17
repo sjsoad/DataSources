@@ -14,9 +14,9 @@
 		A5436A2E214E33640067834B /* Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5436A2D214E33640067834B /* Range.swift */; };
 		A59C85E220DE3E920049BEA0 /* SectionHeaderRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59C85C820DE3E920049BEA0 /* SectionHeaderRepresentable.swift */; };
 		A59C85E420DE3E920049BEA0 /* SectionFooterRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59C85CA20DE3E920049BEA0 /* SectionFooterRepresentable.swift */; };
-		A59C85E520DE3E920049BEA0 /* DataSourceObjectInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59C85CD20DE3E920049BEA0 /* DataSourceObjectInterface.swift */; };
+		A59C85E520DE3E920049BEA0 /* InterfaceRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59C85CD20DE3E920049BEA0 /* InterfaceRepresentable.swift */; };
 		A59C85E620DE3E920049BEA0 /* ArrayDataSourceRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59C85CF20DE3E920049BEA0 /* ArrayDataSourceRepresentable.swift */; };
-		A59C85E720DE3E920049BEA0 /* InterfaceRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59C85D120DE3E920049BEA0 /* InterfaceRepresentable.swift */; };
+		A59C85E720DE3E920049BEA0 /* PresenterRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59C85D120DE3E920049BEA0 /* PresenterRepresentable.swift */; };
 		A59C85E920DE3E920049BEA0 /* TableViewRowEditing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59C85D620DE3E920049BEA0 /* TableViewRowEditing.swift */; };
 		A59C85EB20DE3E920049BEA0 /* RowMoving.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59C85D920DE3E920049BEA0 /* RowMoving.swift */; };
 		A59C85EC20DE3E920049BEA0 /* DataSourceRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59C85DA20DE3E920049BEA0 /* DataSourceRepresentable.swift */; };
@@ -57,9 +57,9 @@
 		A5436A2D214E33640067834B /* Range.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Range.swift; sourceTree = "<group>"; };
 		A59C85C820DE3E920049BEA0 /* SectionHeaderRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionHeaderRepresentable.swift; sourceTree = "<group>"; };
 		A59C85CA20DE3E920049BEA0 /* SectionFooterRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionFooterRepresentable.swift; sourceTree = "<group>"; };
-		A59C85CD20DE3E920049BEA0 /* DataSourceObjectInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSourceObjectInterface.swift; sourceTree = "<group>"; };
+		A59C85CD20DE3E920049BEA0 /* InterfaceRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterfaceRepresentable.swift; sourceTree = "<group>"; };
 		A59C85CF20DE3E920049BEA0 /* ArrayDataSourceRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayDataSourceRepresentable.swift; sourceTree = "<group>"; };
-		A59C85D120DE3E920049BEA0 /* InterfaceRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterfaceRepresentable.swift; sourceTree = "<group>"; };
+		A59C85D120DE3E920049BEA0 /* PresenterRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresenterRepresentable.swift; sourceTree = "<group>"; };
 		A59C85D620DE3E920049BEA0 /* TableViewRowEditing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewRowEditing.swift; sourceTree = "<group>"; };
 		A59C85D920DE3E920049BEA0 /* RowMoving.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RowMoving.swift; sourceTree = "<group>"; };
 		A59C85DA20DE3E920049BEA0 /* DataSourceRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSourceRepresentable.swift; sourceTree = "<group>"; };
@@ -125,7 +125,7 @@
 		A59C85CC20DE3E920049BEA0 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
-				A59C85CD20DE3E920049BEA0 /* DataSourceObjectInterface.swift */,
+				A59C85CD20DE3E920049BEA0 /* InterfaceRepresentable.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -141,7 +141,7 @@
 		A59C85D020DE3E920049BEA0 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				A59C85D120DE3E920049BEA0 /* InterfaceRepresentable.swift */,
+				A59C85D120DE3E920049BEA0 /* PresenterRepresentable.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -497,7 +497,7 @@
 				A5E54913214BE546008D780E /* DefaultDataSource.swift in Sources */,
 				A5E54920214BF0D9008D780E /* CollectionViewArrayDataSource.swift in Sources */,
 				A59C85E220DE3E920049BEA0 /* SectionHeaderRepresentable.swift in Sources */,
-				A59C85E720DE3E920049BEA0 /* InterfaceRepresentable.swift in Sources */,
+				A59C85E720DE3E920049BEA0 /* PresenterRepresentable.swift in Sources */,
 				A51A40E9214CD562008AB43F /* Array.swift in Sources */,
 				A5E54915214BE8EB008D780E /* ArrayDataSource.swift in Sources */,
 				A5BCE503214BCACA00B05AE0 /* TableViewArrayDataSourceRepresentable.swift in Sources */,
@@ -509,7 +509,7 @@
 				A5BCE508214BDF4900B05AE0 /* DefaultSection.swift in Sources */,
 				A5BCE4FC214BB7AA00B05AE0 /* SectionRepresentable.swift in Sources */,
 				A5E5491E214BF0AE008D780E /* CollectionViewArrayDataSourceRepresentable.swift in Sources */,
-				A59C85E520DE3E920049BEA0 /* DataSourceObjectInterface.swift in Sources */,
+				A59C85E520DE3E920049BEA0 /* InterfaceRepresentable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
