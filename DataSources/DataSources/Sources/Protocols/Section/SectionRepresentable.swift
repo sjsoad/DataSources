@@ -14,7 +14,7 @@ public protocol SectionRepresentable {
     var footer: SectionFooterRepresentable? { get }
     
     func itemsCount() -> Int
-    func item<PresenterType>(at index: Int) ->  PresenterType?
+    func item<PresenterType>(at index: Int) -> PresenterType?
     func headerTitle() -> String?
     func footerTitle() -> String?
     

@@ -30,5 +30,4 @@ open class DefaultDataSource: NSObject, DataSourceRepresentable {
         return sections[indexPath.section].item(at: indexPath.row)
     }
     
-
 }
