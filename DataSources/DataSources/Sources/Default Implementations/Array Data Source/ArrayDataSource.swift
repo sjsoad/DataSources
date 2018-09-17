@@ -22,7 +22,7 @@ open class ArrayDataSource: DefaultDataSource, ArrayDataSourceRepresentable {
     // MARK: - Public -
     
     public func append(with items: [PresenterType], toSectionAt sectionIndex: Int, handler: SectionsChangeHandler?) {
-        guard sections.indices.contains(sectionIndex) || sectionIndex == 0 else { return }
+        guard sections.indices.contains(sectionIndex) else { return }
         let section = sections[sectionIndex]
         section.append(with: items, handler: sectionChangeHandler(for: sectionIndex, with: handler))
     }
@@ -89,6 +89,7 @@ open class ArrayDataSource: DefaultDataSource, ArrayDataSourceRepresentable {
     }
     
     public func insert(with newSection: SectionRepresentable, at index: Int, handler: DataSourceChangeHandler?) {
+        guard sections.indices.contains(index) || index == 0 else { return }
         sections.insert(newSection, at: index)
         handler?([index])
     }
