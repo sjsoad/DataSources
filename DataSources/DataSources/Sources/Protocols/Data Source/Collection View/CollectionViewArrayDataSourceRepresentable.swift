@@ -8,6 +8,6 @@
 
 import Foundation
 
-public protocol CollectionViewArrayDataSourceRepresentable: ArrayDataSourceRepresentable, UICollectionViewDataSource {
+public protocol CollectionViewArrayDataSourceRepresentable: ArrayDataSourceRepresentable, DataSourceRepresentable, UICollectionViewDataSource {
 
 }

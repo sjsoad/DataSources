@@ -8,6 +8,6 @@
 
 import Foundation
 
-public protocol TableViewArrayDataSourceRepresentable: ArrayDataSourceRepresentable, UITableViewDataSource {
+public protocol TableViewArrayDataSourceRepresentable: ArrayDataSourceRepresentable, DataSourceRepresentable, UITableViewDataSource {
     
 }

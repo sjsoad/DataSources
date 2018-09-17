@@ -30,7 +30,7 @@ public protocol ArrayDataSourceRepresentable {
     func insert(with newSection: SectionRepresentable, at index: Int, handler: DataSourceChangeHandler?)
     
     /*
-    For propper reordering implement:
+    For propper reordering in UITableView implement:
     func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath
     */
     
