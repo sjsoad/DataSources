@@ -24,7 +24,7 @@ open class DefaultSection: NSObject, SectionRepresentable {
         return items.count
     }
     
-    public func item<PresenterType>(at index: Int) ->  PresenterType? {
+    public func item<PresenterType>(at index: Int) -> PresenterType? {
         guard items.indices.contains(index) else { return nil }
         return items[index] as? PresenterType
     }

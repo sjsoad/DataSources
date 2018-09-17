@@ -31,7 +31,8 @@ public protocol ArrayDataSourceRepresentable {
     
     /*
     For propper reordering in UITableView implement:
-    func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath
+    func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath,
+    toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath
     */
     
     func replace(itemAt indexPath: IndexPath, with item: PresenterType)
