@@ -61,11 +61,19 @@ open class CollectionViewArrayDataSource: ArrayDataSource, CollectionViewArrayDa
     private func presenter(for indexPath: IndexPath, kind: String) -> PresenterType? {
         guard sections.indices.contains(indexPath.section) else { return nil }
         let section = sections[indexPath.section]
-        if kind == UICollectionElementKindSectionHeader {
+        #if swift(>=4.2)
+        if kind == UICollectionView.elementKindSectionHeader {
             return section.header
-        } else if kind == UICollectionElementKindSectionFooter {
+        } else if kind == UICollectionView.elementKindSectionFooter {
             return section.footer
         }
+        #else
+        if kind == UICollectionElementKindSectionHeader {
+        return section.header
+        } else if kind == UICollectionElementKindSectionFooter {
+        return section.footer
+        }
+        #endif
         return nil
     }
     

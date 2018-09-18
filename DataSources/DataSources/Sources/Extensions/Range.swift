@@ -10,7 +10,7 @@ import Foundation
 
 extension CountableRange where Bound == Int {
     
-    func newRange(offsetBy distance: Int) -> CountableRange {
+    func newRange(offsetBy distance: Int) -> CountableRange<Int> {
         let newStartIndex = lowerBound + distance
         let newEndIndex = upperBound + distance
         return newStartIndex..<newEndIndex

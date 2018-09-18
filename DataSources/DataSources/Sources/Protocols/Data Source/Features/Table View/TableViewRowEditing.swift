@@ -11,5 +11,5 @@ import Foundation
 
 public protocol TableViewRowEditing: class {
     
-    var edititngHandler: ((_ editingStyle: UITableViewCellEditingStyle, _ indexPath: IndexPath) -> Void)? { get }
+    var edititngHandler: ((_ editingStyle: UITableViewCell.EditingStyle, _ indexPath: IndexPath) -> Void)? { get }
 }

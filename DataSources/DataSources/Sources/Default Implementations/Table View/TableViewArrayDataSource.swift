@@ -62,7 +62,7 @@ open class TableViewArrayDataSource: ArrayDataSource, TableViewArrayDataSourceRe
     
     // Data manipulation - insert and delete support
 
-    public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         editingProvider?.edititngHandler?(editingStyle, indexPath)
     }
     
