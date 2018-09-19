@@ -2,14 +2,14 @@ Pod::Spec.new do |s|
 
 # 1
 s.platform = :ios
-s.swift_version = '4.0'
+s.swift_version = '4.2'
 s.ios.deployment_target = '10.0'
 s.name = "SKDataSources"
 s.summary = "DataSources allows you to create UITableView or UICollectionView data source and manage it"
 s.requires_arc = true
 
 # 2
-s.version = "0.1.3"
+s.version = "0.1.4"
 
 # 3
 s.license = { :type => "MIT", :file => "LICENSE" }
