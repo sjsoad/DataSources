@@ -25,6 +25,11 @@ open class DefaultDataSource: NSObject, DataSourceRepresentable {
         return sections[section].itemsCount()
     }
     
+    public func section(at index: Int) -> SectionRepresentable? {
+        guard sections.indices.contains(index) else { return nil }
+        return sections[index]
+    }
+    
     public func item<PresenterType>(at indexPath: IndexPath) -> PresenterType? {
         guard sections.indices.contains(indexPath.section) else { return nil }
         return sections[indexPath.section].item(at: indexPath.row)

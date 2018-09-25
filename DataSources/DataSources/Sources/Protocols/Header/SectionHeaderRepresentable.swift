@@ -10,6 +10,6 @@ import UIKit
 
 public protocol SectionHeaderRepresentable: PresenterType {
 
-    var headerTitle: String? { get set }
+    var headerTitle: String? { get }
 
 }
