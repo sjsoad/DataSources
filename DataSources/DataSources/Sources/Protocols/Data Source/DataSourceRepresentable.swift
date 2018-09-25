@@ -11,6 +11,7 @@ import Foundation
 
 public protocol DataSourceRepresentable {
 
+    var isEmpty: Bool { get }
     func numberOfSections() -> Int
     func numberOfItems(in section: Int) -> Int
     func section(at index: Int) -> SectionRepresentable?

@@ -9,7 +9,7 @@
 import UIKit
 
 open class DefaultSection: NSObject, SectionRepresentable {
-
+    
     private var items: [PresenterType]
     public private(set) var header: SectionHeaderRepresentable?
     public private(set) var footer: SectionFooterRepresentable?
@@ -19,6 +19,8 @@ open class DefaultSection: NSObject, SectionRepresentable {
         self.header = header
         self.footer = footer
     }
+    
+    public var isEmpty: Bool { return items.isEmpty }
     
     public func itemsCount() -> Int {
         return items.count
@@ -63,6 +65,11 @@ open class DefaultSection: NSObject, SectionRepresentable {
     public func remove(itemAt index: Int) {
         guard items.indices.contains(index) else { return }
         items.remove(at: index)
+    }
+    
+    public func removeAll(with handler: SectionChangeHandler?) {
+        handler?(items.indices.asArray())
+        items.removeAll()
     }
     
     // MARK: - Insert -

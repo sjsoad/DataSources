@@ -16,6 +16,8 @@ open class DefaultDataSource: NSObject, DataSourceRepresentable {
         self.sections = sections
     }
     
+    public var isEmpty: Bool { return numberOfSections() == 0 }
+    
     public func numberOfSections() -> Int {
         return sections.count
     }

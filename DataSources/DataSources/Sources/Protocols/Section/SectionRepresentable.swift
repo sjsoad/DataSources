@@ -12,6 +12,7 @@ public protocol SectionRepresentable {
     
     var header: SectionHeaderRepresentable? { get }
     var footer: SectionFooterRepresentable? { get }
+    var isEmpty: Bool { get }
     
     func itemsCount() -> Int
     func item<PresenterType>(at index: Int) -> PresenterType?
@@ -23,6 +24,7 @@ public protocol SectionRepresentable {
     
     func remove(itemsAt indices: [Int])
     func remove(itemAt index: Int)
+    func removeAll(with handler: SectionChangeHandler?)
     
     func insert(with newItems: [PresenterType], at index: Int, handler: SectionChangeHandler?)
     func insert(with item: PresenterType, at index: Int)
