@@ -44,3 +44,37 @@ public protocol ArrayDataSourceRepresentable {
     func reorderSections(at sourceIndex: Int, and destinationIndex: Int)
     
 }
+
+public extension ArrayDataSourceRepresentable {
+    
+    // MARK: - Append -
+    
+    func append(with item: PresenterType, toSectionAt sectionIndex: Int, handler: SectionsChangeHandler?) {
+        append(with: [item], toSectionAt: sectionIndex, handler: handler)
+    }
+    
+    func append(with newSection: SectionRepresentable, handler: DataSourceChangeHandler?) {
+        append(with: [newSection], handler: handler)
+    }
+    
+    // MARK: - Remove -
+    
+    func remove(itemsAt indexPathes: [IndexPath]) {
+        indexPathes.forEach({ remove(itemAt: $0) })
+    }
+    
+    func remove(sectionsAt indices: IndexSet) {
+        indices.forEach({ remove(sectionAt: $0) })
+    }
+    
+    // MARK: - Insert -
+    
+    func insert(with item: PresenterType, at indexPath: IndexPath) {
+        insert(with: [item], at: indexPath, handler: nil)
+    }
+    
+    func insert(with newSection: SectionRepresentable, at index: Int, handler: DataSourceChangeHandler?) {
+        insert(with: [newSection], at: index, handler: handler)
+    }
+    
+}

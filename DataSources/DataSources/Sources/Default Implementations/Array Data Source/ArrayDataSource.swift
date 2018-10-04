@@ -29,10 +29,6 @@ open class ArrayDataSource: DefaultDataSource, ArrayDataSourceRepresentable {
         section.append(with: items, handler: sectionChangeHandler(for: sectionIndex, with: handler))
     }
     
-    public func append(with item: PresenterType, toSectionAt sectionIndex: Int, handler: SectionsChangeHandler?) {
-        append(with: [item], toSectionAt: sectionIndex, handler: handler)
-    }
-    
     public func append(with newSections: [SectionRepresentable], handler: DataSourceChangeHandler?) {
         guard !newSections.isEmpty else { return }
         let diff = newSections.indices.newRange(offsetBy: sections.count).asIndexSet()
@@ -40,17 +36,7 @@ open class ArrayDataSource: DefaultDataSource, ArrayDataSourceRepresentable {
         handler?(diff)
     }
     
-    public func append(with newSection: SectionRepresentable, handler: DataSourceChangeHandler?) {
-        append(with: [newSection], handler: handler)
-    }
-    
     // MARK: Remove
-    
-    public func remove(itemsAt indexPathes: [IndexPath]) {
-        indexPathes.forEach { [weak self] (indexPath) in
-            self?.remove(itemAt: indexPath)
-        }
-    }
     
     public func remove(itemAt indexPath: IndexPath) {
         guard sections.indices.contains(indexPath.section) else { return }
@@ -62,12 +48,6 @@ open class ArrayDataSource: DefaultDataSource, ArrayDataSourceRepresentable {
         let deletedIndexPathes = indexPathes
         sections.forEach({ $0.removeAll(with: nil) })
         handler?(deletedIndexPathes)
-    }
-    
-    public func remove(sectionsAt indices: IndexSet) {
-        indices.forEach { [weak self] (index) in
-            self?.remove(sectionAt: index)
-        }
     }
     
     public func remove(sectionAt index: Int) {
@@ -89,21 +69,13 @@ open class ArrayDataSource: DefaultDataSource, ArrayDataSourceRepresentable {
         section.insert(with: items, at: indexPath.row, handler: sectionChangeHandler(for: indexPath.section, with: handler))
     }
     
-    public func insert(with item: PresenterType, at indexPath: IndexPath) {
-        insert(with: [item], at: indexPath, handler: nil)
-    }
-    
     public func insert(with newSections: [SectionRepresentable], at index: Int, handler: DataSourceChangeHandler?) {
         guard !newSections.isEmpty, sections.indices.contains(index) || index == 0 else { return }
         let diff = newSections.indices.newRange(offsetBy: index).asIndexSet()
         sections.insert(contentsOf: newSections, at: index)
         handler?(diff)
     }
-    
-    public func insert(with newSection: SectionRepresentable, at index: Int, handler: DataSourceChangeHandler?) {
-        insert(with: [newSection], at: index, handler: handler)
-    }
-    
+
     // MARK: Replace/Reorder
     
     public func replace(itemAt indexPath: IndexPath, with item: PresenterType) {
