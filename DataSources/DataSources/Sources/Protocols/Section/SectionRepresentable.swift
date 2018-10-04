@@ -34,3 +34,35 @@ public protocol SectionRepresentable {
     func reorderItems(at sourceIndex: Int, and destinationIndex: Int)
     
 }
+
+public extension SectionRepresentable {
+    
+    // MARK: - Utils -
+    
+    func headerTitle() -> String? {
+        return header?.headerTitle
+    }
+    
+    func footerTitle() -> String? {
+        return footer?.footerTitle
+    }
+    
+    // MARK: - Append -
+    
+    func append(with item: PresenterType, handler: SectionChangeHandler?) {
+        append(with: [item], handler: handler)
+    }
+    
+    // MARK: - Remove -
+    
+    func remove(itemsAt indices: [Int]) {
+        indices.forEach({ remove(itemAt: $0) })
+    }
+    
+    // MARK: - Insert -
+    
+    func insert(with item: PresenterType, at index: Int) {
+        insert(with: [item], at: index, handler: nil)
+    }
+    
+}

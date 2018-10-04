@@ -31,14 +31,6 @@ open class DefaultSection: NSObject, SectionRepresentable {
         return items[index] as? PresenterType
     }
     
-    public func headerTitle() -> String? {
-        return header?.headerTitle
-    }
-    
-    public func footerTitle() -> String? {
-        return footer?.footerTitle
-    }
-    
     // MARK: - Append -
     
     public func append(with newItems: [PresenterType], handler: SectionChangeHandler?) {
@@ -48,18 +40,8 @@ open class DefaultSection: NSObject, SectionRepresentable {
         handler?(diff)
     }
     
-    public func append(with item: PresenterType, handler: SectionChangeHandler?) {
-        append(with: [item], handler: handler)
-    }
-    
     // MARK: - Remove -
-    
-    public func remove(itemsAt indices: [Int]) {
-        indices.forEach { [weak self] (index) in
-            self?.remove(itemAt: index)
-        }
-    }
-    
+
     public func remove(itemAt index: Int) {
         guard items.indices.contains(index) else { return }
         items.remove(at: index)
@@ -78,10 +60,6 @@ open class DefaultSection: NSObject, SectionRepresentable {
         let diff = newItems.indices.newRange(offsetBy: index).asArray()
         items.insert(contentsOf: newItems, at: index)
         handler?(diff)
-    }
-    
-    public func insert(with item: PresenterType, at index: Int) {
-        insert(with: [item], at: index, handler: nil)
     }
     
     // MARK: - Replace -
