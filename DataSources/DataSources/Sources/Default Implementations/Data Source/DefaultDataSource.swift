@@ -16,7 +16,29 @@ open class DefaultDataSource: NSObject, DataSourceRepresentable {
         self.sections = sections
     }
     
-    public var isEmpty: Bool { return numberOfSections() == 0 }
+    // MARK: - Utils -
+    
+    public var isEmpty: Bool { return sections.isEmpty }
+    
+    public var sectionsIndices: IndexSet {
+        return IndexSet(sections.indices)
+    }
+    
+    public var indexPathes: [IndexPath] {
+        return sectionsIndices.flatMap({ (sectionIndex) -> [IndexPath] in
+            return indexPathes(for: sectionIndex)
+        })
+    }
+    
+    public func rowIndices(for section: Int) -> Range<Int> {
+        return 0..<numberOfItems(in: section)
+    }
+    
+    public func indexPathes(for section: Int) -> [IndexPath] {
+        return rowIndices(for: section).compactMap({ IndexPath(item: $0, section: section) })
+    }
+    
+    // MARK: - Common -
     
     public func numberOfSections() -> Int {
         return sections.count

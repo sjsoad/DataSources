@@ -19,9 +19,11 @@ public protocol ArrayDataSourceRepresentable {
     
     func remove(itemsAt indexPathes: [IndexPath])
     func remove(itemAt indexPath: IndexPath)
+    func removeAllItems(handler: SectionsChangeHandler?)
     
     func remove(sectionsAt indices: [Int])
     func remove(sectionAt index: Int)
+    func removeAllSections(handler: DataSourceChangeHandler?)
     
     func insert(with items: [PresenterType], at indexPath: IndexPath, handler: SectionsChangeHandler?)
     func insert(with item: PresenterType, at indexPath: IndexPath)

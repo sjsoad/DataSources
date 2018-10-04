@@ -68,8 +68,9 @@ open class DefaultSection: NSObject, SectionRepresentable {
     }
     
     public func removeAll(with handler: SectionChangeHandler?) {
-        handler?(items.indices.asArray())
+        let indices = items.indices.asArray()
         items.removeAll()
+        handler?(indices)
     }
     
     // MARK: - Insert -

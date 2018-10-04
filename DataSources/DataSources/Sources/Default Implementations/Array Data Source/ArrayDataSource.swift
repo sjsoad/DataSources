@@ -9,7 +9,7 @@
 import UIKit
 
 open class ArrayDataSource: DefaultDataSource, ArrayDataSourceRepresentable {
-    
+
     // MARK: - Private -
     
     private func sectionChangeHandler(for sectionIndex: Int, with handler: SectionsChangeHandler?) -> SectionChangeHandler {
@@ -20,6 +20,8 @@ open class ArrayDataSource: DefaultDataSource, ArrayDataSourceRepresentable {
     }
     
     // MARK: - Public -
+    
+    // MARK: Append
     
     public func append(with items: [PresenterType], toSectionAt sectionIndex: Int, handler: SectionsChangeHandler?) {
         guard sections.indices.contains(sectionIndex) else { return }
@@ -46,6 +48,8 @@ open class ArrayDataSource: DefaultDataSource, ArrayDataSourceRepresentable {
         handler?(diff)
     }
     
+    // MARK: Remove
+    
     public func remove(itemsAt indexPathes: [IndexPath]) {
         indexPathes.forEach { [weak self] (indexPath) in
             self?.remove(itemAt: indexPath)
@@ -58,6 +62,12 @@ open class ArrayDataSource: DefaultDataSource, ArrayDataSourceRepresentable {
         section.remove(itemAt: indexPath.row)
     }
     
+    public func removeAllItems(handler: SectionsChangeHandler?) {
+        let deletedIndexPathes = indexPathes
+        sections.forEach({ $0.removeAll(with: nil) })
+        handler?(deletedIndexPathes)
+    }
+    
     public func remove(sectionsAt indices: [Int]) {
         indices.forEach { [weak self] (index) in
             self?.remove(sectionAt: index)
@@ -68,6 +78,14 @@ open class ArrayDataSource: DefaultDataSource, ArrayDataSourceRepresentable {
         guard sections.indices.contains(index) else { return }
         sections.remove(at: index)
     }
+    
+    public func removeAllSections(handler: DataSourceChangeHandler?) {
+        let deletedIndices = sectionsIndices
+        sections.removeAll()
+        handler?(deletedIndices)
+    }
+    
+    // MARK: Insert
     
     public func insert(with items: [PresenterType], at indexPath: IndexPath, handler: SectionsChangeHandler?) {
         guard sections.indices.contains(indexPath.section) else { return }
@@ -93,6 +111,8 @@ open class ArrayDataSource: DefaultDataSource, ArrayDataSourceRepresentable {
         sections.insert(newSection, at: index)
         handler?([index])
     }
+    
+    // MARK: Replace/Reorder
     
     public func replace(itemAt indexPath: IndexPath, with item: PresenterType) {
         guard sections.indices.contains(indexPath.section) else { return }
