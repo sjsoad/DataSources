@@ -49,9 +49,7 @@ open class DefaultSection: NSObject, SectionRepresentable {
     }
     
     public func append(with item: PresenterType, handler: SectionChangeHandler?) {
-        let diff = [items.endIndex]
-        items.append(item)
-        handler?(diff)
+        append(with: [item], handler: handler)
     }
     
     // MARK: - Remove -
@@ -69,7 +67,7 @@ open class DefaultSection: NSObject, SectionRepresentable {
     
     public func removeAll(with handler: SectionChangeHandler?) {
         let indices = items.indices.asArray()
-        items.removeAll()
+        remove(itemsAt: indices)
         handler?(indices)
     }
     
@@ -83,8 +81,7 @@ open class DefaultSection: NSObject, SectionRepresentable {
     }
     
     public func insert(with item: PresenterType, at index: Int) {
-        guard items.indices.contains(index) || index == 0 else { return }
-        items.insert(item, at: index)
+        insert(with: [item], at: index, handler: nil)
     }
     
     // MARK: - Replace -

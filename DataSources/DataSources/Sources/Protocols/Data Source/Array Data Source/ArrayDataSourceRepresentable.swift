@@ -21,7 +21,7 @@ public protocol ArrayDataSourceRepresentable {
     func remove(itemAt indexPath: IndexPath)
     func removeAllItems(handler: SectionsChangeHandler?)
     
-    func remove(sectionsAt indices: [Int])
+    func remove(sectionsAt indices: IndexSet)
     func remove(sectionAt index: Int)
     func removeAllSections(handler: DataSourceChangeHandler?)
     
