@@ -57,7 +57,7 @@ open class ArrayDataSource: DefaultDataSource, ArrayDataSourceRepresentable {
     
     public func removeAllSections(handler: DataSourceChangeHandler?) {
         let deletedIndices = sectionsIndices
-        remove(sectionsAt: deletedIndices)
+        sections.removeAll()
         handler?(deletedIndices)
     }
     
